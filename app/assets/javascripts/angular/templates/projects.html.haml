@@ -1,0 +1,25 @@
+%div(ng-repeat="project in projects")
+  .panel.panel-primary
+
+    .panel-heading
+      %h4
+        %span.glyphicon.glyphicon-list-alt(aria-hidden="true")
+        {{project.title}}
+        .pull-right
+          %span.glyphicon.glyphicon-pencil(aria-hidden="true" style="cursor: pointer; font-size: 15px" ng-click="updateProject(project)")
+          &nbsp;
+          %span.glyphicon.glyphicon-trash(aria-hidden="true" style="cursor: pointer; font-size: 15px" ng-click="deleteProject(project)")
+
+    .panel-footer
+      %form(ng-submit="createTask()")
+        .input-group
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-plus(aria-hidden="true" style="color: green")
+          %input.form-control(ng-model="comment" placeholder="Start typing here to create task...")
+          %span.input-group-btn
+            %button.btn.btn-success
+              Add Task
+
+    .panel-body
+      .tasks(ng-include = "'angular/templates/tasks.html'")
+  %br

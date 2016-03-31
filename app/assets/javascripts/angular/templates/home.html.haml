@@ -1,0 +1,27 @@
+.container
+  .row
+    .col-md-2
+    .col-md-8
+
+      .text-center
+        %h2 SIMPLE TODO LIST
+        %h4 FROM RUBY GARAGE
+        %br
+
+      .projects(ng-include = "'angular/templates/projects.html'")
+
+      %form(ng-submit="createProject()" ng-show="showme")
+        .input-group
+          %input.form-control(ng-model="title" placeholder="Enter the new project title")
+          %span.input-group-btn
+            %button.btn.btn-default(ng-click="showme=false")
+              %span.glyphicon.glyphicon-ok-circle
+            %a.btn.btn-default(ng-click="showme=false")
+              %span.glyphicon.glyphicon-remove-circle
+
+      %button.btn.btn-lg.btn-primary.center-block(ng-click="showme=true")
+        %span.glyphicon.glyphicon-plus(aria-hidden="true")
+        add TODO list
+
+    .col-md-2
+
