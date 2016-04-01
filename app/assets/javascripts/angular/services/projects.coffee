@@ -5,7 +5,7 @@
 
     o.index = ->
       $http.get('/projects.json').success (data) ->
-        angular.copy data, o.projects
+        angular.copy(data, o.projects)
 
     o.create = (project) ->
       $http.post('/projects.json', project).success (data) ->
@@ -15,5 +15,8 @@
       $http.delete('/projects/' + project.id + '.json').success (data) ->
         o.projects.splice(o.projects.indexOf(project), 1)
 
+    o.update = (project) ->
+      $http.patch('/projects/' + project.id + '.json', project).success (data) ->
+        #todo
     o
 ]

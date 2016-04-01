@@ -6,7 +6,7 @@
         %span.glyphicon.glyphicon-list-alt(aria-hidden="true")
         &nbsp;
         {{project.title}}
-        .pull-right
+        .pull-right.edit-project
           %span.glyphicon.glyphicon-pencil(aria-hidden="true" style="cursor: pointer; font-size: 15px" ng-click="updateProject(project)")
           &nbsp;
           %span.glyphicon.glyphicon-trash(aria-hidden="true" style="cursor: pointer; font-size: 15px" ng-click="deleteProject(project)")
@@ -22,5 +22,5 @@
               Add Task
 
     .panel-body
-      .tasks(ng-include = "'angular/templates/tasks.html'")
+      .tasks(ng-include = "'angular/templates/_tasks.html'")
   %br

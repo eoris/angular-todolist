@@ -4,15 +4,15 @@
   '$stateProvider'
   '$urlRouterProvider'
   ($stateProvider, $urlRouterProvider) ->
-    $stateProvider.state 'home',
-      url: '/home'
-      templateUrl: 'angular/templates/home.html'
-      controller: 'homeCtrl'
+    $stateProvider.state 'projects',
+      url: '/'
+      templateUrl: 'angular/templates/index.html'
+      controller: 'projectsCtrl'
       resolve: projectPromise: [
         'projects'
         (projects) ->
           projects.index()
       ]
 
-    $urlRouterProvider.otherwise 'home'
+    $urlRouterProvider.otherwise '/'
 ])

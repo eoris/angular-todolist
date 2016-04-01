@@ -7,22 +7,27 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-       render :json => @project, status: 200
+       render json: @project, status: 200
     else
-       render :json => {:errors => @project.errors.full_messages}
+       render json: {:errors => @project.errors.full_messages}
     end
   end
 
   def update
-
+    @project = Project.find(params[:id])
+    if @project.update(project_params)
+       render json: @project, status: 200
+    else
+       render json: {:errors => @project.errors.full_messages}
+    end
   end
 
   def destroy
     @project = Project.find(params[:id])
     if @project.destroy
-       render :json => @project, status: 200
+       render json: @project, status: 200
     else
-       render :json => {:errors => @project.errors.full_messages}
+       render json: {:errors => @project.errors.full_messages}
     end
   end
 
