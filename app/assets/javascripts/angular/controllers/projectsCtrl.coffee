@@ -8,7 +8,7 @@
 
     # create project
     $scope.createProject = ->
-      if !$scope.title or $scope.title == ''
+      if  $scope.title == ''
         return
       projects.create
         title: $scope.title

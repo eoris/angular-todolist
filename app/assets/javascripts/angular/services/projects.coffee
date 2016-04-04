@@ -1,22 +1,22 @@
 @angularTodo.factory 'projects', [
   '$http'
   ($http) ->
-    o = projects: []
+    projects = projects: []
 
-    o.index = ->
+    projects.index = ->
       $http.get('/projects.json').success (data) ->
-        angular.copy(data, o.projects)
+        angular.copy(data, projects.projects)
 
-    o.create = (project) ->
+    projects.create = (project) ->
       $http.post('/projects.json', project).success (data) ->
-        o.projects.push(data)
+        projects.projects.push(data)
 
-    o.delete = (project) ->
-      $http.delete('/projects/' + project.id + '.json').success (data) ->
-        o.projects.splice(o.projects.indexOf(project), 1)
-
-    o.update = (project) ->
+    projects.update = (project) ->
       $http.patch('/projects/' + project.id + '.json', project).success (data) ->
-        #todo
-    o
+
+    projects.delete = (project) ->
+      $http.delete('/projects/' + project.id + '.json').success (data) ->
+        projects.projects.splice(projects.projects.indexOf(project), 1)
+
+    projects
 ]
