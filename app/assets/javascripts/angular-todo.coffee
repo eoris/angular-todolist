@@ -8,7 +8,7 @@
       url: '/'
       templateUrl: 'angular/templates/index.html'
       controller: 'projectsCtrl'
-      resolve: projectPromise: [
+      resolve: [
         'projects'
         (projects) ->
           projects.index()

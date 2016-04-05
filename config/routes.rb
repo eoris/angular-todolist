@@ -16,4 +16,12 @@ Rails.application.routes.draw do
     end
   end
 
+  # resources :projects, only: [:index, :create, :update, :destroy], shallow: true do
+  #   resources :tasks, only: [:create, :update, :destroy] do
+  #     resources :comments, only: [:create, :destroy] do
+  #       resources :attachments, only: [:create, :destroy]
+  #     end
+  #   end
+  # end
+
 end
