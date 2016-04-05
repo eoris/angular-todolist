@@ -1,26 +1,28 @@
 @angularTodo.controller 'tasksCtrl', [
   '$scope'
-  'tasks'
-  'projects'
-  ($scope, tasks, projects) ->
+  'tasksFactory'
+  ($scope, tasksFactory) ->
 
-    $scope.tasks = projects.tasks
+    $scope.tasks = {}
 
-    # create task
     $scope.createTask = (project) ->
-      if  $scope.task_title == ''
+      if $scope.task_title == ''
         return
-      tasks.create
+      tasksFactory.create(
         title: $scope.task_title
         project_id: project.id
+        ).success (data) ->
+          console.log(project)
+          # console.log($scope.projects)
+          # console.log(project.tasks)
+          project.tasks.push(data)
+          # $scope.projects.push(data)
       $scope.task_title = ''
 
-    # delete task
     $scope.deleteTask = (task) ->
-      tasks.delete(task)
+      tasksFactory.delete(task)
 
-    # update task
     $scope.updateTask = (task) ->
-      tasks.update(task)
+      tasksFactory.update(task)
 
 ]

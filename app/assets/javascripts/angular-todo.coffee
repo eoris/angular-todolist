@@ -8,11 +8,6 @@
       url: '/'
       templateUrl: 'angular/templates/index.html'
       controller: 'projectsCtrl'
-      resolve: [
-        'projects'
-        (projects) ->
-          projects.index()
-      ]
 
     $urlRouterProvider.otherwise '/'
 ])

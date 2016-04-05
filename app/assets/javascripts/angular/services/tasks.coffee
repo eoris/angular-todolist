@@ -1,17 +1,14 @@
-@angularTodo.factory 'tasks', [
+@angularTodo.factory 'tasksFactory', [
   '$http'
   ($http) ->
-    # tasks = tasks: []
-    tasks = {}
 
-    tasks.create = (task) ->
-      $http.post('/projects/' + task.project_id + '/tasks.json', task)
+    create: (task) ->
+      $http.post('/projects/' + task.project_id + '/tasks', task)
 
-    tasks.update = (task) ->
-      $http.patch('/tasks/' + task.id + '.json', task)
+    update: (task) ->
+      $http.patch('/tasks/' + task.id , task)
 
-    tasks.delete = (task) ->
-      $http.delete('/tasks/' + task.id + '.json')
+    delete: (task) ->
+      $http.delete('/tasks/' + task.id)
 
-    tasks
 ]

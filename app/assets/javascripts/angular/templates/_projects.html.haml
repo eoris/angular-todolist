@@ -1,4 +1,4 @@
-%div(ng-repeat="project in projects")
+%div(ng-repeat="project in projects | orderBy: 'id' : reverse")
   .panel.panel-primary
 
     .panel-heading

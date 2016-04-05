@@ -1,25 +1,27 @@
 @angularTodo.controller 'projectsCtrl', [
   '$scope'
-  'projects'
-  ($scope, projects) ->
+  'projectsFactory'
+  ($scope, projectsFactory) ->
 
-    # index projects
-    $scope.projects = projects.projects
+    index = ->
+      projectsFactory.index().success (data) ->
+        $scope.projects = data
 
-    # create project
     $scope.createProject = ->
-      if  $scope.title == ''
+      if  $scope.project_title == ''
         return
-      projects.create
-        title: $scope.title
-      $scope.title = ''
+      projectsFactory.create(
+        title: $scope.project_title
+        ).success (data) ->
+          $scope.projects.push(data)
+      $scope.project_title = ''
 
-    # delete project
     $scope.deleteProject = (project) ->
-      projects.delete(project)
+      projectsFactory.delete(project).success (data) ->
+        $scope.projects.splice($scope.projects.indexOf(project), 1)
 
-    # update project
     $scope.updateProject = (project) ->
-      projects.update(project)
+      projectsFactory.update(project)
 
+    index()
 ]

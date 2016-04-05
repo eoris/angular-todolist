@@ -10,7 +10,7 @@
 
   %form.center-block#new-project(ng-submit="createProject()" ng-show="showme")
     .input-group
-      %input.form-control(ng-model="title" placeholder="Enter the new project title")
+      %input.form-control(ng-model="project_title" placeholder="Enter the new project title")
       %span.input-group-btn
         %button.btn.btn-default(ng-click="showme=false")
           %span.glyphicon.glyphicon-ok-circle

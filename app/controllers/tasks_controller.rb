@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
   def create
-    @project = Project.find(task_params[:project_id])
-    @task = @project.tasks.new(task_params)
+    # @project = Project.find(task_params[:project_id])
+    # @task = @project.tasks.new(task_params)
+    @task = Task.new(task_params)
     if @task.save
        render json: @task, status: 200
     else
