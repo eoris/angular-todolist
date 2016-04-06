@@ -1,2 +1,9 @@
-%div(ng-repeat="task in project.tasks")
-  {{task.title}}
+.table-responsive
+  %table.table-bordered
+    %tbody
+      %tr(ng-repeat="task in project.tasks")
+        %td
+          %label
+            %input(type="checkbox")
+        %td {{task.title}}
+        %td {{task.deadline}}

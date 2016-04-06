@@ -3,20 +3,17 @@
   'tasksFactory'
   ($scope, tasksFactory) ->
 
-    $scope.tasks = {}
+    # $scope.tasks = {}
 
     $scope.createTask = (project) ->
       if $scope.task_title == ''
         return
       tasksFactory.create(
         title: $scope.task_title
+        deadline: $scope.deadline
         project_id: project.id
         ).success (data) ->
-          console.log(project)
-          # console.log($scope.projects)
-          # console.log(project.tasks)
-          project.tasks.push(data)
-          # $scope.projects.push(data)
+          project.tasks.push(data.task)
       $scope.task_title = ''
 
     $scope.deleteTask = (task) ->

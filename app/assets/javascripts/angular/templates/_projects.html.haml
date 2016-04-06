@@ -23,15 +23,18 @@
               %span.glyphicon.glyphicon-remove-circle
 
     .panel-footer
-      %form(ng-controller="tasksCtrl" ng-submit="createTask(project)")
+      %form.form-inline(ng-controller="tasksCtrl" ng-submit="createTask(project)")
         .input-group
           %span.input-group-addon
             %span.glyphicon.glyphicon-plus.task-plus(aria-hidden="true")
-          %input.form-control(ng-model="task_title" placeholder="Start typing here to create task...")
+          .form-group
+            %input.form-control.task-title-input(ng-model="task_title" placeholder="Start typing here to create task...")
+          .form-group
+            %input.form-control.deadline(type="date" ng-model="deadline")
           %span.input-group-btn
             %button.btn.btn-success
               Add Task
 
-    .panel-body
-      .tasks(ng-include = "'angular/templates/_tasks.html'")
+
+    .tasks(ng-include = "'angular/templates/_tasks.html'")
   %br

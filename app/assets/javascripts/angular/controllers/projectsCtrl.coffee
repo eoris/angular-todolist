@@ -5,7 +5,7 @@
 
     index = ->
       projectsFactory.index().success (data) ->
-        $scope.projects = data
+        $scope.projects = data.projects
 
     $scope.createProject = ->
       if  $scope.project_title == ''
@@ -13,7 +13,7 @@
       projectsFactory.create(
         title: $scope.project_title
         ).success (data) ->
-          $scope.projects.push(data)
+          $scope.projects.push(data.project)
       $scope.project_title = ''
 
     $scope.deleteProject = (project) ->
