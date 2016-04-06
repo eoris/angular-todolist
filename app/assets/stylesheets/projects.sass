@@ -2,6 +2,22 @@ body
   background: linear-gradient(to top, #DEC01C, #F8F3F3) no-repeat center center fixed
   background-size: cover
 
+// title
+h2 small
+  color: black
+
+h2
+  text-shadow: 1px -1px white
+  font-weight: bold
+
+// add project button
+.add-project
+  font-weight: bold
+.plus-project
+  font: larger
+  color: #255B8A
+  text-shadow: 1px 1px 2px black, 0 0 1em #B5B4B4
+
 // new project form
 form#new-project
   width: 50%
@@ -31,7 +47,7 @@ body
 // task show/hide pencil and trash ico
 .edit-task
   display: none
-.table-hover > tbody > tr:hover .edit-task
+.table > tbody > tr:hover .edit-task
   display: block
 
 //title font size
@@ -53,15 +69,16 @@ body
 .task-plus
   color: green
 
-// datepicker and task title width
-//.task-title-input
-//  width: 435px
-//input.form-control > .deadline
-//  width: 160px
-
 // table
 .table > tbody > tr > td
   vertical-align: middle
 
 input[type="checkbox"]
   vertical-align: sub
+
+.table tr:hover
+  background-color: #FCFEAF
+
+.task-title
+  border-left: 3px double #efdadf
+  border-right: 1px solid #e7ebea

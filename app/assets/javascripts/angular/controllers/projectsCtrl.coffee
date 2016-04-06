@@ -3,12 +3,14 @@
   'projectsFactory'
   ($scope, projectsFactory) ->
 
+    $scope.project_title = ''
+
     index = ->
       projectsFactory.index().success (data) ->
         $scope.projects = data.projects
 
     $scope.createProject = ->
-      if  $scope.project_title == ''
+      if $scope.project_title == ''
         return
       projectsFactory.create(
         title: $scope.project_title

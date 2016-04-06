@@ -16,8 +16,8 @@
 
     $scope.deleteTask = (task) ->
       tasksFactory.delete(task).success (data) ->
-        console.log(data)
-        project.tasks.splice(project.tasks.indexOf(task), 1)
+        index = $scope.project.tasks.indexOf(task)
+        $scope.project.tasks.splice(index, 1)
 
     $scope.updateTask = (task) ->
       tasksFactory.update(task)

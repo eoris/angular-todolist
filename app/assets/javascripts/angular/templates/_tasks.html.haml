@@ -1,13 +1,23 @@
-%table.table.table-hover(ng-controller="tasksCtrl")
-  %tbody(ui-sortable ng-model="project.tasks")
-    %tr(ng-repeat="task in project.tasks")
-      %td(style="width: 5%; text-align: center")
-        %label
-          %input.text-center(type="checkbox")
-      %td(style="width: 75%") {{task.title}}
-      %td(style="width: 10%")
-        %span.label.label-warning {{task.deadline}}
-      %td(style="width: 10%")
-        .edit-task
-          %span.glyphicon.glyphicon-pencil
-          %span.glyphicon.glyphicon-trash(aria-hidden="true" style="cursor: pointer; font-size: 15px" ng-click="deleteTask(task)")
+%tbody(ui-sortable ng-model="project.tasks")
+  %tr(ng-repeat="task in project.tasks")
+    %td(style="width: 5%; text-align: center" ng-hide="edittask")
+      %label
+        %input.text-center(type="checkbox")
+    %td.task-title(style="width: 74%" ng-hide="edittask") {{task.title}}
+    %td.task-date(style="width: 10%" ng-hide="edittask")
+      %span.label.label-warning {{task.deadline}}
+    %td(style="width: 10%" ng-hide="edittask")
+      .edit-task
+        %span.glyphicon.glyphicon-pencil(aria-hidden="true" style="cursor: pointer; font-size: 15px" ng-click="edittask=true")
+        %span.glyphicon.glyphicon-trash(aria-hidden="true" style="cursor: pointer; font-size: 15px" ng-click="deleteTask(task)")
+
+    %td(ng-show="edittask")
+      %form.form-inline(ng-submit="updateTask(task); edittask=false")
+        .input-group.center-block
+          .form-group.task-title-input
+            %input.form-control(ng-model="task.title" placeholder="Start typing here to create task..." style="width: 460px")
+          .form-group.deadline
+            %input.form-control(type="date" ng-model="task.deadline" style="width: 167px")
+          %span.input-group-btn(ng-click="")
+            %button.btn.btn-success
+              Update Task
