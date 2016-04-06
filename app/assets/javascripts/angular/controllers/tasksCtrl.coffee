@@ -3,8 +3,6 @@
   'tasksFactory'
   ($scope, tasksFactory) ->
 
-    # $scope.tasks = {}
-
     $scope.createTask = (project) ->
       if $scope.task_title == ''
         return
@@ -17,7 +15,9 @@
       $scope.task_title = ''
 
     $scope.deleteTask = (task) ->
-      tasksFactory.delete(task)
+      tasksFactory.delete(task).success (data) ->
+        console.log(data)
+        project.tasks.splice(project.tasks.indexOf(task), 1)
 
     $scope.updateTask = (task) ->
       tasksFactory.update(task)

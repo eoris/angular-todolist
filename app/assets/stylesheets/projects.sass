@@ -22,10 +22,16 @@ body
   height: 30px
   color: white
 
-// show/hide pencil and trash ico
+// project show/hide pencil and trash ico
 .edit-project
   display: none
 .panel-heading:hover .edit-project
+  display: block
+
+// task show/hide pencil and trash ico
+.edit-task
+  display: none
+.table-hover > tbody > tr:hover .edit-task
   display: block
 
 //title font size
@@ -48,7 +54,14 @@ body
   color: green
 
 // datepicker and task title width
-.task-title-input
-  width: 435px
-%input.deadline
-  width: 1600px
+//.task-title-input
+//  width: 435px
+//input.form-control > .deadline
+//  width: 160px
+
+// table
+.table > tbody > tr > td
+  vertical-align: middle
+
+input[type="checkbox"]
+  vertical-align: sub

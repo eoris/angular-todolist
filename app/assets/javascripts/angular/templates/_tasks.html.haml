@@ -1,9 +1,13 @@
-.table-responsive
-  %table.table.table-hover
-    %tbody(ui-sortable ng-model="project.tasks")
-      %tr(ng-repeat="task in project.tasks")
-        %td
-          %label
-            %input(type="checkbox")
-        %td {{task.title}}
-        %td {{task.deadline}}
+%table.table.table-hover(ng-controller="tasksCtrl")
+  %tbody(ui-sortable ng-model="project.tasks")
+    %tr(ng-repeat="task in project.tasks")
+      %td(style="width: 5%; text-align: center")
+        %label
+          %input.text-center(type="checkbox")
+      %td(style="width: 75%") {{task.title}}
+      %td(style="width: 10%")
+        %span.label.label-warning {{task.deadline}}
+      %td(style="width: 10%")
+        .edit-task
+          %span.glyphicon.glyphicon-pencil
+          %span.glyphicon.glyphicon-trash(aria-hidden="true" style="cursor: pointer; font-size: 15px" ng-click="deleteTask(task)")
