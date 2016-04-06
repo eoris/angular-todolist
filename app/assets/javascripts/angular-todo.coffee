@@ -1,4 +1,4 @@
-@angularTodo = angular.module('angularTodo', ['ui.router', 'templates'])
+@angularTodo = angular.module('angularTodo', ['ui.router', 'ui.sortable', 'templates'])
 
 @angularTodo.config([
   '$stateProvider'

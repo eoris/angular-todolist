@@ -9,6 +9,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem "haml-rails", "~> 0.9"
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'cancancan', '~> 1.10'
 gem 'active_model_serializers'
 

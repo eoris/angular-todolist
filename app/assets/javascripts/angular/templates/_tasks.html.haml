@@ -1,6 +1,6 @@
 .table-responsive
-  %table.table-bordered
-    %tbody
+  %table.table.table-hover
+    %tbody(ui-sortable ng-model="project.tasks")
       %tr(ng-repeat="task in project.tasks")
         %td
           %label
