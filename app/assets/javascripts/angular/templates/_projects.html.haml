@@ -7,8 +7,8 @@
       %span.panel-title &nbsp; {{project.title | limitTo: 32}}
 
       .pull-right.edit-project
-        %span.glyphicon.glyphicon-pencil(aria-hidden="true" style="cursor: pointer; font-size: 15px" ng-click="input=true")
-        %span.glyphicon.glyphicon-trash(aria-hidden="true" style="cursor: pointer; font-size: 15px" ng-click="deleteProject(project)")
+        %span.glyphicon.glyphicon-pencil.project-edit(aria-hidden="true" style="font-size: 15px" ng-click="input=true")
+        %span.glyphicon.glyphicon-trash.project-delete(aria-hidden="true" style="font-size: 15px" ng-click="deleteProject(project)")
 
     %form(ng-show="input")
       .input-group
@@ -22,14 +22,12 @@
             %span.glyphicon.glyphicon-remove-circle
 
   .panel-footer
-    %form.form-inline(ng-controller="tasksCtrl" ng-submit="createTask(project)")
+    %form(ng-controller="tasksCtrl" ng-submit="createTask(project)")
       .input-group
         %span.input-group-addon
           %span.glyphicon.glyphicon-plus.task-plus(aria-hidden="true")
-        .form-group.task-title-input
-          %input.form-control(ng-model="task_title" placeholder="Start typing here to create task..." style="width: 433px")
-        .form-group.deadline
-          %input.form-control(type="date" ng-model="deadline" style="width: 160px")
+        .form-group
+          %input.form-control(ng-model="task_title" placeholder="Start typing here to create task...")
         %span.input-group-btn
           %button.btn.btn-success
             Add Task

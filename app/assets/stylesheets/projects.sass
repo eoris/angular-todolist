@@ -2,6 +2,9 @@ body
   background: linear-gradient(to top, #DEC01C, #F8F3F3) no-repeat center center fixed
   background-size: cover
 
+.glyphicon
+  cursor: pointer
+
 // title
 h2 small
   color: black
@@ -60,9 +63,9 @@ body
 //title edit project
 .edit-project
   margin-top: 9px
-.glyphicon-pencil
+.project-edit
   margin-right: 15px
-.glyphicon-trash
+.project-delete
   margin-right: 10px
 
 // add task plus
@@ -73,6 +76,16 @@ body
 .table > tbody > tr > td
   vertical-align: middle
 
+.table tr td:nth-child(1)
+  text-align: center
+  width: 5%
+.table tr td:nth-child(2)
+  width: 70%
+.table tr td:nth-child(3)
+  width: 10%
+.table tr td:nth-child(4)
+  width: 15%
+
 input[type="checkbox"]
   vertical-align: sub
 
@@ -81,5 +94,18 @@ input[type="checkbox"]
 
 .task-title
   border-left: 3px double #efdadf
+.edit-task-title
+  border-left: 3px double #efdadf
+td.edit-task-title.ng-scope
+  padding-bottom: 5px
+  padding-top: 5px
 .task-date
   border-right: 1px solid #e7ebea
+
+// task edit
+.task-date
+  margin-left: 10px
+.task-edit
+  margin-right: 10px
+  margin-left: 10px
+

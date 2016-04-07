@@ -1,23 +1,22 @@
 %tbody(ui-sortable ng-model="project.tasks")
   %tr(ng-repeat="task in project.tasks")
-    %td(style="width: 5%; text-align: center" ng-hide="edittask")
+    %td
       %label
         %input.text-center(type="checkbox")
-    %td.task-title(style="width: 74%" ng-hide="edittask") {{task.title}}
-    %td.task-date(style="width: 10%" ng-hide="edittask")
-      %span.label.label-warning {{task.deadline}}
-    %td(style="width: 10%" ng-hide="edittask")
+    %td.task-title(ng-model="taskVisible" ng-if="taskVisible") {{task.title}}
+    %td.edit-task-title(ng-model="editTaskHide" ng-if="editTaskHide")
+      %form
+        .input-group
+          %input.input-sm.form-control(ng-model="task.title")
+          %span.input-group-btn
+            %button.btn.btn-default.btn-sm(ng-click="updateTask(task); showHideEdit(task)")
+              %span.glyphicon.glyphicon-ok-circle
+            %a.btn.btn-default.btn-sm(ng-click="showHideEdit(task)")
+              %span.glyphicon.glyphicon-remove-circle
+    %td.task-date
+      %span.label.label-warning {{task.deadline | date:'dd-MM-yyyy'}}
+    %td
       .edit-task.center-block
-        %span.glyphicon.glyphicon-pencil(aria-hidden="true" style="cursor: pointer" ng-click="edittask=true")
-        %span.glyphicon.glyphicon-trash(aria-hidden="true" style="cursor: pointer" ng-click="deleteTask(task)")
-
-    %td(ng-show="edittask")
-      %form.form-inline(ng-submit="updateTask(task); edittask=false")
-        .input-group.center-block
-          .form-group.task-title-input
-            %input.form-control(ng-model="task.title" placeholder="Start typing here to create task..." style="width: 460px")
-          .form-group.deadline
-            %input.form-control(type="date" ng-model="deadline" style="width: 167px")
-          %span.input-group-btn(ng-click="")
-            %button.btn.btn-success
-              Update Task
+        %span.glyphicon.glyphicon-calendar.task-date(aria-hidden="true")
+        %span.glyphicon.glyphicon-pencil.task-edit(aria-hidden="true" ng-click="showHideEdit(task)")
+        %span.glyphicon.glyphicon-trash.task-delete(aria-hidden="true" ng-click="deleteTask(task)")

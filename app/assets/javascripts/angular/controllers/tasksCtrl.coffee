@@ -3,6 +3,8 @@
   'tasksFactory'
   ($scope, tasksFactory) ->
 
+    $scope.task_title = ''
+
     $scope.createTask = (project) ->
       if $scope.task_title == ''
         return
@@ -20,6 +22,14 @@
         $scope.project.tasks.splice(index, 1)
 
     $scope.updateTask = (task) ->
-      tasksFactory.update(task)
+      tasksFactory.update(task).success ->
 
+    $scope.taskVisible = true
+    $scope.editTaskHide = false
+
+    $scope.showHideEdit = (task) ->
+      # $scope.taskVisible = $scope.taskVisible == false ? true : false
+      # $scope.editTaskHide = $scope.editTaskHide == false ? false : true
+      $scope.taskVisible = !$scope.taskVisible
+      $scope.editTaskHide = !$scope.editTaskHide
 ]
