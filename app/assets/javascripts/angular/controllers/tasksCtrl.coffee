@@ -24,12 +24,15 @@
     $scope.updateTask = (task) ->
       tasksFactory.update(task).success ->
 
-    $scope.taskVisible = true
-    $scope.editTaskHide = false
+    $scope.switchEditTask = (task) ->
+      task.editTask = !task.editTask
+      $scope.task_title = task.title
 
-    $scope.showHideEdit = (task) ->
-      # $scope.taskVisible = $scope.taskVisible == false ? true : false
-      # $scope.editTaskHide = $scope.editTaskHide == false ? false : true
-      $scope.taskVisible = !$scope.taskVisible
-      $scope.editTaskHide = !$scope.editTaskHide
+
+    # $scope.reset = (task) ->
+    #   console.log($scope.task_title)
+    #   $scope.task_title = angular.copy($scope.task_title)
+    #   return
+    # $scope.reset()
+
 ]

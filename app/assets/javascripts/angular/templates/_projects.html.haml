@@ -10,13 +10,13 @@
         %span.glyphicon.glyphicon-pencil.project-edit(aria-hidden="true" style="font-size: 15px" ng-click="input=true")
         %span.glyphicon.glyphicon-trash.project-delete(aria-hidden="true" style="font-size: 15px" ng-click="deleteProject(project)")
 
-    %form(ng-show="input")
+    %form(ng-show="input" novalidate ng-submit="updateProject(project)" name="updateProjectForm")
       .input-group
         %span.input-group-addon
           %span.glyphicon.glyphicon-list-alt(aria-hidden="true")
-        %input.form-control(ng-model="project.title")
+        %input.form-control(type="text" ng-model="project.title" ng-required="true" ng-minlength="1")
         %span.input-group-btn
-          %button.btn.btn-default(ng-click="input=false; updateProject(project)")
+          %button.btn.btn-default(type="submit" ng-click="input=false" ng-disabled="updateProjectForm.$invalid")
             %span.glyphicon.glyphicon-ok-circle
           %a.btn.btn-default(ng-click="input=false")
             %span.glyphicon.glyphicon-remove-circle

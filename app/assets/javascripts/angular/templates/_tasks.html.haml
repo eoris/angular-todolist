@@ -3,20 +3,20 @@
     %td
       %label
         %input.text-center(type="checkbox")
-    %td.task-title(ng-model="taskVisible" ng-if="taskVisible") {{task.title}}
-    %td.edit-task-title(ng-model="editTaskHide" ng-if="editTaskHide")
-      %form
+    %td.task-title(ng-if="!task.editTask") {{task.title}}
+    %td.edit-task-title(ng-if="task.editTask")
+      %form(ng-submit="updateTask(task); switchEditTask(task)" novalidate name="updateTaskForm")
         .input-group
-          %input.input-sm.form-control(ng-model="task.title")
+          %input.input-sm.form-control(type="text" ng-model="task.title" ng-required="true" ng-minlength="1")
           %span.input-group-btn
-            %button.btn.btn-default.btn-sm(ng-click="updateTask(task); showHideEdit(task)")
+            %button.btn.btn-default.btn-sm(type="submit" ng-disabled="updateTaskForm.$invalid")
               %span.glyphicon.glyphicon-ok-circle
-            %a.btn.btn-default.btn-sm(ng-click="showHideEdit(task)")
+            %a.btn.btn-default.btn-sm(ng-click="switchEditTask(task)")
               %span.glyphicon.glyphicon-remove-circle
     %td.task-date
       %span.label.label-warning {{task.deadline | date:'dd-MM-yyyy'}}
     %td
       .edit-task.center-block
         %span.glyphicon.glyphicon-calendar.task-date(aria-hidden="true")
-        %span.glyphicon.glyphicon-pencil.task-edit(aria-hidden="true" ng-click="showHideEdit(task)")
+        %span.glyphicon.glyphicon-pencil.task-edit(aria-hidden="true" ng-click="switchEditTask(task)")
         %span.glyphicon.glyphicon-trash.task-delete(aria-hidden="true" ng-click="deleteTask(task)")
