@@ -7,9 +7,9 @@
     %td.task-date(style="width: 10%" ng-hide="edittask")
       %span.label.label-warning {{task.deadline}}
     %td(style="width: 10%" ng-hide="edittask")
-      .edit-task
-        %span.glyphicon.glyphicon-pencil(aria-hidden="true" style="cursor: pointer; font-size: 15px" ng-click="edittask=true")
-        %span.glyphicon.glyphicon-trash(aria-hidden="true" style="cursor: pointer; font-size: 15px" ng-click="deleteTask(task)")
+      .edit-task.center-block
+        %span.glyphicon.glyphicon-pencil(aria-hidden="true" style="cursor: pointer" ng-click="edittask=true")
+        %span.glyphicon.glyphicon-trash(aria-hidden="true" style="cursor: pointer" ng-click="deleteTask(task)")
 
     %td(ng-show="edittask")
       %form.form-inline(ng-submit="updateTask(task); edittask=false")
@@ -17,7 +17,7 @@
           .form-group.task-title-input
             %input.form-control(ng-model="task.title" placeholder="Start typing here to create task..." style="width: 460px")
           .form-group.deadline
-            %input.form-control(type="date" ng-model="task.deadline" style="width: 167px")
+            %input.form-control(type="date" ng-model="deadline" style="width: 167px")
           %span.input-group-btn(ng-click="")
             %button.btn.btn-success
               Update Task
