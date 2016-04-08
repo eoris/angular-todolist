@@ -2,7 +2,7 @@
   %tr(ng-repeat="task in project.tasks")
     %td
       %label
-        %input.text-center(type="checkbox" ng-model="task.done")
+        %input.text-center(type="checkbox" ng-checked="task.done" ng-click="switchTaskDone(task)")
     %td.task-title(ng-if="!task.editTask") {{task.title}}
     %td.edit-task-title(ng-if="task.editTask")
       %form(ng-submit="updateTask(task); switchEditTask(task)" novalidate name="updateTaskForm")

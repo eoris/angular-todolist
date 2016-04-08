@@ -28,6 +28,10 @@
       task.title = $scope.taskTitleUpdate.title
       tasksFactory.update(task)
 
+    $scope.switchTaskDone = (task) ->
+      task.done = !task.done
+      tasksFactory.update(task)
+
     $scope.switchEditTask = (task) ->
       $scope.taskTitleUpdate.title = task.title
       task.editTask = !task.editTask

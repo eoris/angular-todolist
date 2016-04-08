@@ -5,5 +5,6 @@
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require angular-ui-sortable
+//= require angular-ui-bootstrap-1.3.1
 //= require angular-todo
 //= require_tree .
