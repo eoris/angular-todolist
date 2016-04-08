@@ -12,7 +12,7 @@
 
   %form.center-block#new-project(ng-submit="createProject()" ng-show="showme" name="newprojectform")
     .input-group
-      %input.form-control(type="text" ng-required="true" ng-minlength="1" ng-model="project_title" placeholder="Enter the new project title")
+      %input.form-control(type="text" ng-required="true" ng-minlength="1" ng-model="projectTitle.title" placeholder="Enter the new project title")
       %span.input-group-btn
         %button.btn.btn-default(type="submit" ng-click="showme=false" ng-disabled="newprojectform.$invalid")
           %span.glyphicon.glyphicon-ok-circle

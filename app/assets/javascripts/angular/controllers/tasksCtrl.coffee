@@ -3,8 +3,6 @@
   'tasksFactory'
   ($scope, tasksFactory) ->
 
-    $scope.taskTitleUpdate = {}
-
     $scope.createTask = (project) ->
       if $scope.taskTitle == undefined
         return
@@ -16,24 +14,36 @@
           project.tasks.push(data.task)
       $scope.taskTitle = {}
 
+    $scope.taskIndex = (task) ->
+      $scope.project.tasks.indexOf(task)
+
     $scope.deleteTask = (task) ->
       tasksFactory.delete(task).success (data) ->
-        index = $scope.project.tasks.indexOf(task)
+        index = $scope.taskIndex(task)
         $scope.project.tasks.splice(index, 1)
+
+    $scope.taskTitleUpdate = {}
 
     $scope.updateTask = (task) ->
       task.title = $scope.taskTitleUpdate.title
-      console.log($scope.taskTitleUpdate)
-      console.log($scope.taskTitleUpdate.title)
-      tasksFactory.update(task).success ->
+      tasksFactory.update(task)
 
     $scope.switchEditTask = (task) ->
       $scope.taskTitleUpdate.title = task.title
       task.editTask = !task.editTask
 
+    # fix row width when sortable
     fixHelper = (e, ui) ->
       ui.children().each ->
         $(this).width $(this).width()
       ui
-    $scope.sortableOptions = helper: fixHelper
+
+    $scope.sortableOptions =
+      helper: fixHelper
+      stop: ->
+        tasks = $scope.project.tasks
+        tasks.map (task) ->
+          task.position = $scope.taskIndex(task)
+          tasksFactory.update(task)
 ]
+

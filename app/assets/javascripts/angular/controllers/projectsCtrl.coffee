@@ -3,27 +3,32 @@
   'projectsFactory'
   ($scope, projectsFactory) ->
 
-    $scope.project_title = ''
+    $scope.projectTitleUpdate = {}
 
     index = ->
       projectsFactory.index().success (data) ->
         $scope.projects = data.projects
 
     $scope.createProject = ->
-      if $scope.project_title == ''
+      if $scope.projectTitle == undefined
         return
       projectsFactory.create(
-        title: $scope.project_title
+        title: $scope.projectTitle.title
         ).success (data) ->
           $scope.projects.push(data.project)
-      $scope.project_title = ''
+      $scope.projectTitle = {}
 
     $scope.deleteProject = (project) ->
       projectsFactory.delete(project).success (data) ->
         $scope.projects.splice($scope.projects.indexOf(project), 1)
 
     $scope.updateProject = (project) ->
+      project.title = $scope.projectTitleUpdate.title
       projectsFactory.update(project)
+
+    $scope.switchEditProject = (project) ->
+      $scope.projectTitleUpdate.title = project.title
+      project.editProject = !project.editProject
 
     index()
 ]
