@@ -16,7 +16,9 @@
     %td.task-date
       %span.label.label-warning {{task.deadline | date:'dd-MM-yyyy'}}
     %td
-      .edit-task.center-block
-        %span.glyphicon.glyphicon-calendar.task-date(aria-hidden="true")
+      .edit-task.dropdown
+        %span.glyphicon.glyphicon-calendar.task-date.dropdown-toggle{ "id" => "task-date-{{task.id}}", "aria-hidden" => "true", "data-toggle" => "dropdown"}
+        %ul.dropdown-menu{:role => "menu"}
+          %datetimepicker{"data-datetimepicker-config" => "{ dropdownSelector: 'task-date-{{task.id}}', minView:'day' }", "data-ng-model" => "data.dateDropDownLink"}
         %span.glyphicon.glyphicon-pencil.task-edit(aria-hidden="true" ng-click="switchEditTask(task)")
         %span.glyphicon.glyphicon-trash.task-delete(aria-hidden="true" ng-click="deleteTask(task)")

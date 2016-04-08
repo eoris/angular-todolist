@@ -1,10 +1,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require bootstrap-sprockets
+//= require moment
 //= require angular
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require angular-ui-sortable
-//= require angular-ui-bootstrap-1.3.1
+//= require datetimepicker
+//= require datetimepicker.templates
 //= require angular-todo
 //= require_tree .
