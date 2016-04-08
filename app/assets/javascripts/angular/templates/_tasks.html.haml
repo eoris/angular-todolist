@@ -1,4 +1,4 @@
-%tbody(ui-sortable ng-model="project.tasks")
+%tbody(ui-sortable="sortableOptions" ng-model="project.tasks")
   %tr(ng-repeat="task in project.tasks")
     %td
       %label
@@ -7,7 +7,7 @@
     %td.edit-task-title(ng-if="task.editTask")
       %form(ng-submit="updateTask(task); switchEditTask(task)" novalidate name="updateTaskForm")
         .input-group
-          %input.input-sm.form-control(type="text" ng-model="task.title" ng-required="true" ng-minlength="1")
+          %input.input-sm.form-control(type="text" ng-model="taskTitleUpdate.title" ng-required="true" ng-minlength="1")
           %span.input-group-btn
             %button.btn.btn-default.btn-sm(type="submit" ng-disabled="updateTaskForm.$invalid")
               %span.glyphicon.glyphicon-ok-circle
