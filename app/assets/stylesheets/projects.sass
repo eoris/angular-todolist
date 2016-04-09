@@ -26,31 +26,21 @@ form#new-project
   width: 50%
   margin-bottom: 30px
 
-// footer
-html
-  position: relative
-  min-height: 100%
-
-body
-  margin-bottom: 30px
-
-#footer
-  position: absolute
-  bottom: 0
-  width: 100%
-  height: 30px
-  color: white
-
 // project show/hide pencil and trash ico
 .edit-project
   display: none
 .panel-heading:hover .edit-project
   display: block
 
+// panel footer
+.panel-footer
+  border-bottom-right-radius: 0px
+  border-bottom-left-radius: 0px
+
 // task show/hide pencil and trash ico
 .edit-task
   display: none
-.table > tbody > tr:hover .edit-task
+tbody > tr:hover .edit-task
   display: block
 
 //title font size
@@ -73,24 +63,25 @@ body
   color: green
 
 // table
-.table.task-table > tbody > tr > td
+.table.task-table tr td
   vertical-align: middle
 
-.table.task-table tr td:nth-child(1)
-  text-align: center
-  width: 5%
-.table.task-table tr td:nth-child(2)
-  width: 70%
-.table.task-table tr td:nth-child(3)
-  width: 10%
-.table.task-table tr td:nth-child(4)
-  width: 15%
+.task-table
+  tr > .task-checkbox
+    text-align: center
+    width: 5%
+  tr > .task-title
+    width: 70%
+  tr > .task-date
+    width: 10%
+  tr > .task-edit-panel
+    width: 15%
+
+tbody > .task-row:hover
+  background-color: #FCFEAF
 
 input[type="checkbox"]
   vertical-align: sub
-
-.table.task-table tr:hover
-  background-color: #FCFEAF
 
 .task-title
   border-left: 3px double #efdadf
@@ -102,10 +93,20 @@ td.edit-task-title.ng-scope
 .task-date
   border-right: 1px solid #e7ebea
 
-// task edit
-.task-date
-  margin-left: 10px
-.task-edit
-  margin-right: 10px
-  margin-left: 10px
+// footer
+html
+  position: relative
+  min-height: 100%
+
+body
+  margin-bottom: 30px
+
+#footer
+  position: absolute
+  bottom: 0
+  width: 100%
+  height: 30px
+  color: white
+
+
 

@@ -1,6 +1,6 @@
 %tbody(ui-sortable="sortableOptions" ng-model="project.tasks")
-  %tr(ng-repeat="task in project.tasks")
-    %td
+  %tr.task-row(ng-repeat="task in project.tasks")
+    %td.task-checkbox
       %label
         %input.text-center(type="checkbox" ng-checked="task.done" ng-click="switchTaskDone(task)")
     %td.task-title(ng-if="!task.editTask") {{task.title}}
@@ -15,10 +15,10 @@
               %span.glyphicon.glyphicon-remove-circle
     %td.task-date
       %span.label.label-warning {{task.deadline | date:'dd-MM-yyyy'}}
-    %td
-      .edit-task.dropdown
-        %span.glyphicon.glyphicon-calendar.task-date.dropdown-toggle{ "id" => "task-date-{{task.id}}", "aria-hidden" => "true", "data-toggle" => "dropdown"}
+    %td.task-edit-panel
+      .edit-task.dropdown.text-center
+        %span.glyphicon.glyphicon-calendar.task-edit-date.dropdown-toggle(aria-hidden="true" data-toggle="dropdown")
         %ul.dropdown-menu{:role => "menu"}
-          %datetimepicker{"data-datetimepicker-config" => "{ dropdownSelector: 'task-date-{{task.id}}', minView:'day' }", "data-ng-model" => "data.dateDropDownLink"}
+          %datetimepicker{"data-datetimepicker-config" => "{ dropdownSelector: 'task-edit-date', minView:'day' }", "data-ng-model" => "data.dateDropDownLink"}
         %span.glyphicon.glyphicon-pencil.task-edit(aria-hidden="true" ng-click="switchEditTask(task)")
         %span.glyphicon.glyphicon-trash.task-delete(aria-hidden="true" ng-click="deleteTask(task)")
