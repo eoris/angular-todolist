@@ -36,6 +36,9 @@
       $scope.taskTitleUpdate.title = task.title
       task.editTask = !task.editTask
 
+    $scope.switchComments = (task) ->
+      task.showComments = !task.showComments
+
     # fix row width when sortable
     fixHelper = (e, ui) ->
       ui.children().each ->

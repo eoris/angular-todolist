@@ -1,6 +1,7 @@
 body
   background: linear-gradient(to top, #DEC01C, #F8F3F3) no-repeat center center fixed
   background-size: cover
+  overflow: scroll
 
 .glyphicon:not(.glyphicon-ok-circle)
   cursor: pointer
@@ -66,8 +67,8 @@ tbody tr .glyphicon
   color: green
 
 // table
-.table.task-table tr td
-  vertical-align: middle
+// .table.task-table tr td
+//   vertical-align: middle
 
 .task-table
   tr > .task-checkbox
@@ -97,9 +98,13 @@ td.edit-task-title.ng-scope
   border-right: 1px solid #e7ebea
 
 // when task done
-.task-done-true
+tr > .task-done-true
   text-decoration: line-through
   color: grey
+
+// comments
+.comments
+  margin-top: 10px
 
 // footer
 html
