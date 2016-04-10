@@ -37,11 +37,14 @@ form#new-project
   border-bottom-right-radius: 0px
   border-bottom-left-radius: 0px
 
-// task show/hide pencil and trash ico
-.edit-task
+//task show/hide pencil and trash ico
+.edit-task > .glyphicon
   display: none
-tbody > tr:hover .edit-task
-  display: block
+tbody > tr:hover .glyphicon
+  display: inline
+//ico color
+tbody tr .glyphicon
+  color: #59A9EC
 
 //title font size
 .list
@@ -73,9 +76,9 @@ tbody > tr:hover .edit-task
   tr > .task-title
     width: 70%
   tr > .task-date
-    width: 10%
+    width: 9%
   tr > .task-edit-panel
-    width: 15%
+    width: 16%
 
 tbody > .task-row:hover
   background-color: #FCFEAF
@@ -92,6 +95,11 @@ td.edit-task-title.ng-scope
   padding-top: 5px
 .task-date
   border-right: 1px solid #e7ebea
+
+// when task done
+.task-done-true
+  text-decoration: line-through
+  color: grey
 
 // footer
 html

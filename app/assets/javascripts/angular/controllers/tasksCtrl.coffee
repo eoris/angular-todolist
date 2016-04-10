@@ -49,5 +49,8 @@
         tasks.map (task) ->
           task.position = $scope.taskIndex(task)
           tasksFactory.update(task)
-]
+
+    $scope.setDeadline = (task) ->
+      tasksFactory.update(task)
+    ]
 
