@@ -3,7 +3,8 @@
     .well.well-sm {{comment.text}}
   .new-comment
     %form(ng-submit="createComment(task)")
-      %textarea.form-control.input-sm(type="text" placeholder="Your comment.." ng-model ="commentText.text" ng-required="true")
+      %textarea.form-control.input-sm(type="text" placeholder="Your comment.." ng-model ="commentText.text" ng-required="true" rows="2")
+      %a.pull-right.btn.btn-sm.btn-default(aria-hidden="true" ng-click="switchComments(task); sortableOptions.disabled = !sortableOptions.disabled")
+        Cancel
       %button.pull-right.btn.btn-sm.btn-success
         Add comment
-

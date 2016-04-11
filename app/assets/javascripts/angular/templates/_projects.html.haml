@@ -7,8 +7,8 @@
       %span.panel-title &nbsp; {{project.title | limitTo: 32}}
 
       .pull-right.edit-project
-        %span.glyphicon.glyphicon-pencil.project-edit(aria-hidden="true" style="font-size: 15px" ng-click="switchEditProject(project)")
-        %span.glyphicon.glyphicon-trash.project-delete(aria-hidden="true" style="font-size: 15px" ng-click="deleteProject(project)")
+        %span.glyphicon.glyphicon-pencil.project-edit(aria-hidden="true" ng-click="switchEditProject(project)")
+        %span.glyphicon.glyphicon-trash.project-delete(aria-hidden="true" ng-click="deleteProject(project)")
 
     %form(ng-if="project.editProject" novalidate ng-submit="updateProject(project); switchEditProject(project)" name="updateProjectForm")
       .input-group

@@ -35,9 +35,11 @@
     $scope.switchEditTask = (task) ->
       $scope.taskTitleUpdate.title = task.title
       task.editTask = !task.editTask
+      $scope.showPanel = !$scope.showPanel
 
     $scope.switchComments = (task) ->
       task.showComments = !task.showComments
+      $scope.showPanel = !$scope.showPanel
 
     # fix row width when sortable
     fixHelper = (e, ui) ->
@@ -47,6 +49,7 @@
 
     $scope.sortableOptions =
       helper: fixHelper
+      disabled: false
       stop: ->
         tasks = $scope.project.tasks
         tasks.map (task) ->

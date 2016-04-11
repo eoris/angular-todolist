@@ -33,6 +33,10 @@ form#new-project
 .panel-heading:hover .edit-project
   display: block
 
+// edit project panel
+.edit-project
+  font-size: 15px
+
 // panel footer
 .panel-footer
   border-bottom-right-radius: 0px
@@ -67,14 +71,12 @@ tbody tr .glyphicon
   color: green
 
 // table
-// .table.task-table tr td
-//   vertical-align: middle
 
 .task-table
   tr > .task-checkbox
     text-align: center
     width: 5%
-  tr > .task-title
+  tr > .task
     width: 70%
   tr > .task-date
     width: 9%
@@ -87,7 +89,7 @@ tbody > .task-row:hover
 input[type="checkbox"]
   vertical-align: sub
 
-.task-title
+.task
   border-left: 3px double #efdadf
 .edit-task-title
   border-left: 3px double #efdadf
@@ -98,7 +100,7 @@ td.edit-task-title.ng-scope
   border-right: 1px solid #e7ebea
 
 // when task done
-tr > .task-done-true
+.task-done-true > .task-title
   text-decoration: line-through
   color: grey
 
