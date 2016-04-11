@@ -4,9 +4,8 @@
   ($scope, commentsFactory) ->
 
     $scope.createComment = (task) ->
-      if $scope.commentText == undefined
+      if $scope.commentText == undefined || angular.equals({}, $scope.commentText)
         return
-        console.log('asdasd')
       commentsFactory.create(
         text: $scope.commentText.text
         task_id: task.id

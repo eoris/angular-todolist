@@ -4,7 +4,7 @@
   ($scope, tasksFactory) ->
 
     $scope.createTask = (project) ->
-      if $scope.taskTitle == undefined
+      if $scope.taskTitle == undefined || angular.equals({}, $scope.taskTitle)
         return
       tasksFactory.create(
         title: $scope.taskTitle.title
@@ -55,5 +55,6 @@
 
     $scope.setDeadline = (task) ->
       tasksFactory.update(task)
+
     ]
 
