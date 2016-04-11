@@ -23,7 +23,7 @@
       .edit-task.dropdown.text-center(ng-hide="showPanel")
         %span.glyphicon.glyphicon-calendar.task-edit-date.dropdown-toggle(aria-hidden="true" data-toggle="dropdown" )
         %span.glyphicon.glyphicon-comment(aria-hidden="true" ng-click="switchComments(task); sortableOptions.disabled = !sortableOptions.disabled")
-        %ul.dropdown-menu{:role => "menu"}
-          %datetimepicker{ "data-on-set-time" => "setDeadline(task)", "data-datetimepicker-config" => "{ dropdownSelector: 'task-edit-date', minView: 'day', modelType: 'YYYY-MM-DD' }", "data-ng-model" => "task.deadline"}
+        %ul.dropdown-menu(role="menu")
+          %datetimepicker(data-on-set-time="setDeadline(task)" data-datetimepicker-config="{ dropdownSelector: 'task-edit-date', minView: 'day', modelType: 'YYYY-MM-DD' }" data-ng-model="task.deadline")
         %span.glyphicon.glyphicon-pencil.task-edit(aria-hidden="true" ng-click="switchEditTask(task)")
         %span.glyphicon.glyphicon-trash.task-delete(aria-hidden="true" ng-click="deleteTask(task)")

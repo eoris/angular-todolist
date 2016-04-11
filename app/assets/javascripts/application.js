@@ -4,10 +4,12 @@
 //= require bootstrap-sprockets
 //= require moment
 //= require angular
+//= require angular-cookie
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require angular-ui-sortable
 //= require datetimepicker
 //= require datetimepicker.templates
+//= require ng-token-auth
 //= require angular-todo
 //= require_tree .

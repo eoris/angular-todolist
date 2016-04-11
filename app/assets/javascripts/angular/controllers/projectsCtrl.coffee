@@ -1,7 +1,8 @@
 @angularTodo.controller 'projectsCtrl', [
   '$scope'
+  '$auth'
   'projectsFactory'
-  ($scope, projectsFactory) ->
+  ($scope, $auth, projectsFactory) ->
 
     $scope.projectTitleUpdate = {}
 

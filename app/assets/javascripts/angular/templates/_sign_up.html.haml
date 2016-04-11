@@ -1,0 +1,15 @@
+.container
+  .row
+    .col-md-4.col-md-offset-4
+      %form(ng-submit="handleRegBtnClick()" role="form")
+        .form-group
+          %label email
+          %input.form-control(name="email" ng-model="registrationForm.email" required="required" type="email")
+        .form-group
+          %label password
+          %input.form-control(name="password" ng-model="registrationForm.password" required="required" type="password")
+        .form-group
+          %label password confirmation
+          %input.form-control(name="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" type="password")
+        %button.btn.btn-primary(type="submit") Register
+        %a(ui-sref="sign_in") Log In

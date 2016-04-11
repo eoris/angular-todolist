@@ -1,3 +1,4 @@
+%a.pull-right(ui-sref="sign_up" ng-controller="sessionsCtrl" ng-click="handleSignOutBtnClick()") Sign out
 .col-md-2
 .col-md-8
 
@@ -8,7 +9,8 @@
       %small FROM RUBY GARAGE
     %br
 
-  .projects(ng-include = "'angular/templates/_projects.html'")
+
+  .projects(ng-include="'angular/templates/_projects.html'")
 
   %form.center-block#new-project(ng-submit="createProject()" ng-show="showme" name="newprojectform")
     .input-group
