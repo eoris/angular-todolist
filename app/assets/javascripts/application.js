@@ -15,5 +15,6 @@
 //= require angular-animate
 //= require toaster
 //= require nprogress-angular
+//= require ng-file-upload
 //= require angular-todo
 //= require_tree .

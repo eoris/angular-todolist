@@ -19,3 +19,4 @@ coverage
 capybara-*.html
 .rspec
 /confif/database.yml
+/public/uploads/

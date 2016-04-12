@@ -7,6 +7,7 @@
   'nprogress-rails'
   'toaster'
   'ngAnimate'
+  'ngFileUpload'
   ])
 
 @angularTodo.config([

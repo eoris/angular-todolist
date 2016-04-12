@@ -1,7 +1,10 @@
 @angularTodo.controller 'commentsCtrl', [
   '$scope'
   'commentsFactory'
-  ($scope, commentsFactory) ->
+  'attachmentsFactory'
+  ($scope, commentsFactory, attachmentsFactory) ->
+
+    $scope.files = {}
 
     $scope.createComment = (task) ->
       if $scope.commentText == undefined || angular.equals({}, $scope.commentText)
@@ -10,7 +13,13 @@
         text: $scope.commentText.text
         task_id: task.id
         ).success (data) ->
-          task.comments.push(data.comment)
+          comment = data.comment
+          if $scope.files
+            angular.forEach $scope.files, (file, index) ->
+              attachmentsFactory.create(file, comment).success (data) ->
+                comment.attachments.push(data.attachment)
+          $scope.files = {}
+          task.comments.push(comment)
       $scope.commentText = {}
 
     $scope.commentIndex = (comment) ->

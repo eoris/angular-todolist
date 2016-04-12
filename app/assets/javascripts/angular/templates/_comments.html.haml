@@ -1,10 +1,22 @@
 .comments(ng-if="task.showComments" ng-controller="commentsCtrl")
   .comment(ng-repeat="comment in task.comments")
-    .well.well-sm {{comment.text}}
+    .well.well-sm
+      %button.pull-right.close(aria-hidden="true" ng-click="deleteComment(comment)" type="button") &times;
+      {{comment.text}}
+      %ul.attachments
+        %li(ng-repeat="attachment in comment.attachments")
+          %span.glyphicon.glyphicon-file
+          %a(href="{{attachment.file.file.url}}" download="true") {{attachment.file_identifier}}
   .new-comment
     %form(ng-submit="createComment(task)")
       %textarea.form-control.input-sm(type="text" placeholder="Your comment.." ng-model ="commentText.text" ng-required="true" rows="2")
+      %button.btn.btn-sm.btn-primary(name="attachment" ngf-select="true" ngf-multiple="true" ng-model="files")
+        Attach files
       %a.pull-right.btn.btn-sm.btn-default(aria-hidden="true" ng-click="switchComments(task); sortableOptions.disabled = !sortableOptions.disabled")
         Cancel
       %button.pull-right.btn.btn-sm.btn-success
         Add comment
+      .upload-attachments
+        %p(ng-repeat="file in files")
+          %span.glyphicon.glyphicon-file {{file.name}}
+          %span(id="delete-attach-{{$index}}" ng-click="deleteAttachment($index)" style="cursor: pointer") &times;
