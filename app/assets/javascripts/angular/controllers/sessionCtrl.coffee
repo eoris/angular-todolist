@@ -20,5 +20,11 @@
       ).catch (resp) ->
         #toster todo
 
+    $scope.handleFacebookBtnClick = ->
+      console.log('ololo')
+      $auth.authenticate('facebook').then((resp) ->
+        $state.go 'projects'
+      ).catch (resp) ->
+
   ]
 

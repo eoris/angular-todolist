@@ -33,7 +33,8 @@
 
     $urlRouterProvider.otherwise 'sign_in'
     $authProvider.configure
-      apiUrl: ''
+      apiUrl: 'http://localhost:3000/'
+      authProviderPaths: facebook: '/auth/facebook'
 ])
 
 @angularTodo.run [
