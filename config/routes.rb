@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'auth', :controllers => { :omniauth_callbacks => "callbacks" }
+  mount_devise_token_auth_for 'User', at: 'auth'
 
   root 'application#angular'
 

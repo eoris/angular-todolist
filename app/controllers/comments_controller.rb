@@ -1,15 +1,16 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource :task
+  load_and_authorize_resource :comment, through: :task, shallow: true
+
   def create
-    @comment = Comment.new(comment_params)
     if @comment.save
-       render json: @comment
+      render json: @comment
     else
-       render json: {:errors => @comment.errors.full_messages}
+      render json: {:errors => @comment.errors.full_messages}
     end
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.delete
     render json: @comment
   end

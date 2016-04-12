@@ -4,6 +4,7 @@
   'ui.bootstrap.datetimepicker'
   'templates'
   'ng-token-auth'
+  'nprogress-rails'
   ])
 
 @angularTodo.config([
@@ -33,7 +34,7 @@
 
     $urlRouterProvider.otherwise 'sign_in'
     $authProvider.configure
-      apiUrl: 'http://localhost:3000/'
+      apiUrl: ''
       authProviderPaths: facebook: '/auth/facebook'
 ])
 

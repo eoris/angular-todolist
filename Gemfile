@@ -13,6 +13,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'cancancan', '~> 1.10'
 gem 'active_model_serializers'
+gem 'nprogress-rails'
+gem 'carrierwave'
 
 gem 'devise_token_auth'
 gem 'omniauth'

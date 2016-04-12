@@ -1,33 +1,31 @@
 class ProjectsController < ApplicationController
+  load_and_authorize_resource through: :current_user
+
   def index
-    @projects = Project.all
     render json: @projects
   end
 
   def create
-    @project = Project.new(project_params)
     if @project.save
-       render json: @project
+      render json: @project
     else
-       render json: {:errors => @project.errors.full_messages}
+      render json: {:errors => @project.errors.full_messages}
     end
   end
 
   def update
-    @project = Project.find(params[:id])
     if @project.update(project_params)
-       render json: @project
+      render json: @project
     else
-       render json: {:errors => @project.errors.full_messages}
+      render json: {:errors => @project.errors.full_messages}
     end
   end
 
   def destroy
-    @project = Project.find(params[:id])
     if @project.destroy
-       render json: @project
+      render json: @project
     else
-       render json: {:errors => @project.errors.full_messages}
+      render json: {:errors => @project.errors.full_messages}
     end
   end
 

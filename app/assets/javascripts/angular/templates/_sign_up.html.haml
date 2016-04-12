@@ -12,4 +12,7 @@
           %label password confirmation
           %input.form-control(name="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" type="password")
         %button.btn.btn-primary(type="submit") Register
-        %a(ui-sref="sign_in") Log In
+        %p
+          %a(ui-sref="sign_in") Log In
+        %p
+          %a(href="/#/" ng-controller="sessionsCtrl" ng-click="handleFacebookBtnClick()") Facebook

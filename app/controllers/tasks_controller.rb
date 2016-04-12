@@ -1,21 +1,21 @@
 class TasksController < ApplicationController
+  load_and_authorize_resource :project
+  load_and_authorize_resource :task, through: :project, shallow: true
+
   def create
-    @task = Task.new(task_params)
     if @task.save
-       render json: @task
+      render json: @task
     else
-       render json: {:errors => @task.errors.full_messages}
+      render json: {:errors => @task.errors.full_messages}
     end
   end
 
   def update
-    @task = Task.find(params[:id])
     @task.update(task_params)
     render json: @task
   end
 
   def destroy
-    @task = Task.find(params[:id])
     @task.delete
     render json: @task
   end

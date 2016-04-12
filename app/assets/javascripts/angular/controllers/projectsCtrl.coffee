@@ -1,8 +1,10 @@
 @angularTodo.controller 'projectsCtrl', [
   '$scope'
-  '$auth'
   'projectsFactory'
-  ($scope, $auth, projectsFactory) ->
+  ($scope, projectsFactory) ->
+
+    window.location.href = '/#/'
+    # window.history.pushState("root", "projects", "/#/")
 
     $scope.projectTitleUpdate = {}
 
