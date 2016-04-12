@@ -10,20 +10,22 @@
       $auth.submitLogin($scope.loginForm).then (resp) ->
         $state.go 'projects'
         #toster todo
-        .catch (resp) ->
-          #toster todo
+      .catch (resp) ->
+        #toster todo
 
     $scope.handleSignOutBtnClick = ->
-      $auth.signOut().then((resp) ->
-        $state.go('sign_in')
+      $auth.signOut().then (resp) ->
+        $state.go 'sign_in'
+        window.location.href = '/#/sign_in'
         #toster todo
-      ).catch (resp) ->
+      .catch (resp) ->
         #toster todo
 
     $scope.handleFacebookBtnClick = ->
-      $auth.authenticate('facebook').then((resp) ->
+      $auth.authenticate('facebook').then (resp) ->
         $state.go 'projects'
-      ).catch (resp) ->
-
+        #toster todo
+      .catch (resp) ->
+        #toster todo
   ]
 

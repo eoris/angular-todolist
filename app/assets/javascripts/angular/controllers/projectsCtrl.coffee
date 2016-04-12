@@ -3,8 +3,7 @@
   'projectsFactory'
   ($scope, projectsFactory) ->
 
-    window.location.href = '/#/'
-    # window.history.pushState("root", "projects", "/#/")
+    window.history.pushState("", "", "/#/")
 
     $scope.projectTitleUpdate = {}
 
