@@ -12,6 +12,8 @@
 //= require datetimepicker.templates
 //= require ng-token-auth
 //= require nprogress
+//= require angular-animate
+//= require toaster
 //= require nprogress-angular
 //= require angular-todo
 //= require_tree .

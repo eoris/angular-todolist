@@ -1,7 +1,8 @@
 @angularTodo.controller 'projectsCtrl', [
   '$scope'
   'projectsFactory'
-  ($scope, projectsFactory) ->
+  'toaster'
+  ($scope, projectsFactory, toaster) ->
 
     window.history.pushState("", "", "/#/")
 
@@ -10,6 +11,7 @@
     index = ->
       projectsFactory.index().success (data) ->
         $scope.projects = data.projects
+        toaster.pop 'success', 'Hello'
 
     $scope.createProject = ->
       if $scope.projectTitle == undefined

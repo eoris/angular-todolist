@@ -8,12 +8,13 @@
 
     $scope.handleRegBtnClick = ->
       $auth.submitRegistration($scope.registrationForm).then((resp) ->
-        $auth.submitLogin
-          email: $scope.registrationForm.email
-          password: $scope.registrationForm.password
+        console.log(resp)
+        console.log('success')
         $state.go 'projects'
         #toastr todo
       ).catch (resp) ->
+        console.log(resp)
+        console.log('error')
         #toastr todo
 
   ]

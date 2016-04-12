@@ -5,6 +5,8 @@
   'templates'
   'ng-token-auth'
   'nprogress-rails'
+  'toaster'
+  'ngAnimate'
   ])
 
 @angularTodo.config([
