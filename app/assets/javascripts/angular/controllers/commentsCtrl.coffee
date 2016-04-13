@@ -30,5 +30,13 @@
         index = $scope.commentIndex(comment)
         $scope.task.comments.splice(index, 1)
 
+    $scope.deleteUploadAttachment = (index) ->
+      $scope.files.splice(index, 1)
+
+    $scope.deleteAttachment = (comment, attachment) ->
+      attachmentsFactory.delete(attachment).success (data) ->
+        index = comment.attachments.indexOf(attachment)
+        comment.attachments.splice(index, 1)
+
     ]
 
