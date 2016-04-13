@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :comment do
+    task
     text "MyText"
-    task_id 1
   end
 end
