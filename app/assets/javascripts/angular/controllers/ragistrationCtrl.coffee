@@ -2,20 +2,18 @@
   '$scope'
   '$state'
   '$auth'
-  ($scope, $state, $auth) ->
+  'toaster'
+  ($scope, $state, $auth, toaster) ->
 
     registrationForm = {}
 
     $scope.handleRegBtnClick = ->
+      if $scope.registrationForm == undefined || angular.equals({}, $scope.registrationForm)
+        toaster.pop 'error', 'Invalid credentials'
+        return
       $auth.submitRegistration($scope.registrationForm).then((resp) ->
-        console.log(resp)
-        console.log('success')
         $state.go 'projects'
-        #toastr todo
+        toaster.pop 'success', 'Welcome!'
       ).catch (resp) ->
-        console.log(resp)
-        console.log('error')
-        #toastr todo
-
+        toaster.pop 'error', 'Invalid credentials'
   ]
-

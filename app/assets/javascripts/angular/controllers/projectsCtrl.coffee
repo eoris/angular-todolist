@@ -11,7 +11,6 @@
     index = ->
       projectsFactory.index().success (data) ->
         $scope.projects = data.projects
-        toaster.pop 'success', 'Hello'
 
     $scope.createProject = ->
       if $scope.projectTitle == undefined

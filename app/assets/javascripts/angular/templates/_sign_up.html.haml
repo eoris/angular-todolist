@@ -6,7 +6,7 @@
         %div{:style => "float:right; font-size: 85%; position: relative; top:-10px"}
           %a#signinlink(ui-sref="sign_in") Sign In
       .panel-body
-        %form#signupform.form-horizontal{:role => "form"}
+        %form#signupform.form-horizontal(ng-submit="handleRegBtnClick()" role="form")
           .form-group
             %label.col-md-3.control-label{:for => "email"} Email
             .col-md-9
@@ -22,7 +22,7 @@
           .form-group
             / Button
             .col-md-offset-3.col-md-9
-              %button#btn-signup.btn.btn-info(ng-click="handleRegBtnClick()")
+              %button#btn-signup.btn.btn-info(type="submit")
                 %i.icon-hand-right
                 \&nbsp Sign Up
               %span{:style => "margin-left:8px;"} or
