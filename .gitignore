@@ -18,5 +18,5 @@ coverage
 *.rbc
 capybara-*.html
 .rspec
-/confif/database.yml
+/config/database.yml
 /public/uploads/
