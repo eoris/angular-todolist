@@ -6,12 +6,12 @@
       %ul.attachments
         %li(ng-repeat="attachment in comment.attachments")
           %span.glyphicon.glyphicon-file
-          %a(href="{{attachment.file.file.url}}" download="true") {{attachment.file_identifier}}
+          %a(href="{{attachment.file.file.url}}" download) {{attachment.file_identifier}}
           %span.times(aria-hidden="true" ng-click="deleteAttachment(comment, attachment)") &times;
   .new-comment
     %form(ng-submit="createComment(task)")
       %textarea.form-control.input-sm(type="text" placeholder="Your comment.." ng-model ="commentText.text" ng-required="true" rows="2")
-      %button.btn.btn-sm.btn-primary(name="attachment" ngf-select="true" ngf-multiple="true" ng-model="files")
+      %button.btn.btn-sm.btn-primary(name="attachment" ngf-select="" ngf-multiple="true" ng-model="files")
         Attach files
       %a.pull-right.btn.btn-sm.btn-default(aria-hidden="true" ng-click="switchComments(task); sortableOptions.disabled = !sortableOptions.disabled")
         Cancel

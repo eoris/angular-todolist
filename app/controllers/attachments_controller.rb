@@ -11,7 +11,7 @@ class AttachmentsController < ApplicationController
   end
 
   def destroy
-    @attachment.delete
+    @attachment.destroy
     render json: @attachment
   end
 

@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.delete
+    @comment.destroy
     render json: @comment
   end
 
