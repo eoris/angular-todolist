@@ -3,8 +3,11 @@ body
   background-size: cover
   overflow: scroll
 
-.glyphicon:not(.glyphicon-ok-circle)
+.glyphicon:not(.glyphicon-ok-circle):not(.glyphicon-file):not(.glyphicon-list-alt):not(.task-plus)
   cursor: pointer
+
+.sign-out-btn
+  margin-top: 10px
 
 // title
 h2 small
@@ -98,6 +101,10 @@ td.edit-task-title.ng-scope
 .task-done-true > .task-title
   text-decoration: line-through
   color: grey
+
+// #task length
+.task-title
+  word-break: break-all
 
 // comments
 .comments

@@ -12,7 +12,6 @@
         toaster.pop 'error', 'Invalid credentials'
         return
       $auth.submitLogin($scope.loginForm).then (resp) ->
-        console.log(resp)
         $state.go 'projects'
         toaster.pop 'success', 'Welcome!'
       .catch (resp) ->
