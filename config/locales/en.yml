@@ -30,3 +30,17 @@ en:
     add_comment: 'Add comment'
     close: 'Close'
     attach_files: 'Attach files'
+  session:
+    sign_in: 'Sign In'
+    login: 'Login'
+    facebook: 'Login with Facebook'
+    no_account: "Don't have an account!"
+    sign_up_here: 'Sign Up Here'
+  registration:
+    sign_up: 'Sign Up'
+    sign_in: 'Sign In'
+    email: 'Email'
+    password: 'Password'
+    or: 'or'
+    facebook: 'Sign Up with Facebook'
+

@@ -15,5 +15,6 @@
         $state.go 'projects'
         toaster.pop 'success', 'Welcome!'
       ).catch (resp) ->
-        toaster.pop 'error', 'Invalid credentials'
+        angular.forEach resp.data.errors.full_messages, (error, index) ->
+          toaster.pop 'error', error
   ]

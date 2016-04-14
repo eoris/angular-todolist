@@ -2,32 +2,30 @@
   #signupbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2{:style => "margin-top:50px"}
     .panel.panel-info
       .panel-heading
-        .panel-title Sign Up
+        .panel-title= I18n.t('registration.sign_up')
         %div{:style => "float:right; font-size: 85%; position: relative; top:-10px"}
-          %a#signinlink(ui-sref="sign_in") Sign In
+          %a#signinlink(ui-sref="sign_in")= I18n.t('registration.sign_in')
       .panel-body
         %form#signupform.form-horizontal(ng-submit="handleRegBtnClick()" role="form")
           .form-group
-            %label.col-md-3.control-label{:for => "email"} Email
+            %label.col-md-3.control-label{:for => "email"}= I18n.t('registration.email')
             .col-md-9
-              %input.form-control(name="email" placeholder="Email" ng-model="registrationForm.email" required="required" type="email")
+              %input#registration-email.form-control(name="email" placeholder="Email" ng-model="registrationForm.email" required="required" type="email")
           .form-group
-            %label.col-md-3.control-label{:for => "password"} Password
+            %label.col-md-3.control-label{:for => "password"}= I18n.t('registration.password')
             .col-md-9
-              %input.form-control(pattern=".{5,10}" title="8 characters minimum" name="password" placeholder="Password" ng-model="registrationForm.password" required="required" type="password")
+              %input#registration-password.form-control(pattern=".{8,22}" title="8 characters minimum" name="password" placeholder="Password" ng-model="registrationForm.password" required="required" type="password")
           .form-group
             %label.col-md-3.control-label{:for => "password_confirmation"}
             .col-md-9
-              %input.form-control(pattern=".{5,10}" title="8 characters minimum" name="password_confirmation" placeholder="Password confirmation" ng-model="registrationForm.password_confirmation" required="required" type="password")
+              %input#confirm-registration-password.form-control(pattern=".{8,22}" title="8 characters minimum" name="password_confirmation" placeholder="Password confirmation" ng-model="registrationForm.password_confirmation" required="required" type="password")
           .form-group
             / Button
             .col-md-offset-3.col-md-9
               %button#btn-signup.btn.btn-info(type="submit")
-                %i.icon-hand-right
-                \&nbsp Sign Up
-              %span{:style => "margin-left:8px;"} or
+                = I18n.t('registration.sign_up')
+              %span{:style => "margin-left:8px;"}= I18n.t('registration.or')
           .form-group{:style => "border-top: 1px solid #999; padding-top:20px"}
             .col-md-offset-3.col-md-9
-              %a#btn-fbsignup.btn.btn-primary(href="/#/" ng-controller="sessionsCtrl" ng-click="handleFacebookBtnClick()")
-                %i.icon-facebook
-                  Sign Up with Facebook
+              %a#btn-fbsignup.btn.btn-primary(href="/#/" ng-controller="sessionsCtrl" ng-click="handleFacebookBtnClick()")= I18n.t('registration.facebook')
+

@@ -2,7 +2,7 @@
   #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2{:style => "margin-top:50px;"}
     .panel.panel-info
       .panel-heading
-        .panel-title Sign In
+        .panel-title= I18n.t('session.sign_in')
       .panel-body{:style => "padding-top:30px"}
         %form#loginform.form-horizontal(ng-submit="handleLoginBtnClick()" role="form")
           .input-group{:style => "margin-bottom: 25px"}
@@ -17,11 +17,12 @@
           .form-group{:style => "margin-top:10px"}
             / Button
             .col-sm-12.controls
-              %button#btn-login.btn.btn-success(type="submit") Login
-              %a#btn-fblogin.btn.btn-primary(href="/#/" ng-click="handleFacebookBtnClick()") Login with Facebook
+              %button#btn-login.btn.btn-success(type="submit")= I18n.t('session.login')
+              %a#btn-fblogin.btn.btn-primary(href="/#/" ng-click="handleFacebookBtnClick()")= I18n.t('session.facebook')
           .form-group
             .col-md-12.control
               %div{:style => "border-top: 1px solid#888; padding-top:15px; font-size:85%"}
-                Don't have an account!
-                %a(ui-sref="sign_up")
-                  Sign Up Here
+                = I18n.t('session.no_account')
+
+                %a(ui-sref="sign_up")= I18n.t('session.sign_up_here')
+

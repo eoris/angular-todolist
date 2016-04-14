@@ -13,9 +13,9 @@
 
   %form.center-block#new-project(ng-submit="createProject()" ng-show="showme" name="newprojectform")
     .input-group
-      %input.form-control(type="text" ng-required="true" ng-minlength="1" ng-model="projectTitle.title" placeholder="Enter the new project title")
+      %input#add-todo-input.form-control(type="text" ng-required="true" ng-minlength="1" ng-model="projectTitle.title" placeholder="Enter the new project title")
       %span.input-group-btn
-        %button.btn.btn-default(type="submit" ng-click="showme=false" ng-disabled="newprojectform.$invalid")
+        %button#add-todo-button.btn.btn-default(type="submit" ng-click="showme=false" ng-disabled="newprojectform.$invalid")
           %span.glyphicon.glyphicon-ok-circle
         %a.btn.btn-default(ng-click="showme=false")
           %span.glyphicon.glyphicon-remove-circle
