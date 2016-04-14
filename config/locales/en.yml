@@ -31,6 +31,7 @@ en:
     close: 'Close'
     attach_files: 'Attach files'
   session:
+    sign_out: 'Sign out'
     sign_in: 'Sign In'
     login: 'Login'
     facebook: 'Login with Facebook'

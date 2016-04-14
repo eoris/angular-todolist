@@ -27,7 +27,7 @@
         %span.input-group-addon
           %span.glyphicon.glyphicon-plus.task-plus(aria-hidden="true")
         .form-group
-          %input.form-control(ng-model="taskTitle.title" placeholder="#{I18n.t('tasks.task_placeholder')}")
+          %input#task-title-input.form-control(ng-model="taskTitle.title" placeholder="#{I18n.t('tasks.task_placeholder')}")
         %span.input-group-btn
           %button.btn.btn-success= I18n.t('projects.add_task')
 
