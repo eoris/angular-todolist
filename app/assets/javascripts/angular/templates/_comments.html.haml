@@ -10,13 +10,13 @@
           %span.times(aria-hidden="true" ng-click="deleteAttachment(comment, attachment)") &times;
   .new-comment
     %form(ng-submit="createComment(task)")
-      %textarea.form-control.input-sm(type="text" placeholder="Your comment.." ng-model ="commentText.text" ng-required="true" rows="2")
+      %textarea.form-control.input-sm(type="text" placeholder="#{I18n.t('comments.comment_placeholred')}" ng-model ="commentText.text" ng-required="true" rows="2")
       %button.btn.btn-sm.btn-primary(name="attachment" ngf-select="" ngf-multiple="true" ng-model="files")
-        Attach files
+        = I18n.t('comments.attach_files')
       %a.pull-right.btn.btn-sm.btn-default(aria-hidden="true" ng-click="switchComments(task); sortableOptions.disabled = !sortableOptions.disabled")
-        Close
+        = I18n.t('comments.close')
       %button.pull-right.btn.btn-sm.btn-success
-        Add comment
+        = I18n.t('comments.add_comment')
       .upload-attachments
         %p(ng-repeat="file in files")
           %span.glyphicon.glyphicon-file {{file.name}}

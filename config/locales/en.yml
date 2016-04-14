@@ -20,4 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  projects:
+    add_todo_list: 'Add TODO list'
+    add_task: 'Add task'
+  tasks:
+    task_placeholder: 'Start typing here to create task...'
+  comments:
+    comment_placeholred: 'Your comment..'
+    add_comment: 'Add comment'
+    close: 'Close'
+    attach_files: 'Attach files'
