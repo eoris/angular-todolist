@@ -2,7 +2,8 @@
   '$scope'
   'commentsFactory'
   'attachmentsFactory'
-  ($scope, commentsFactory, attachmentsFactory) ->
+  'toaster'
+  ($scope, commentsFactory, attachmentsFactory, toaster) ->
 
     $scope.files = {}
 
@@ -13,6 +14,9 @@
         text: $scope.commentText.text
         task_id: task.id
         ).success (data) ->
+          if data.errors
+            toaster.pop 'error', data.errors[0]
+            return
           comment = data.comment
           if $scope.files
             angular.forEach $scope.files, (file, index) ->

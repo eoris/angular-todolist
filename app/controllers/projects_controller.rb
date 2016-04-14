@@ -22,16 +22,13 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    if @project.destroy
-      render json: @project
-    else
-      render json: {:errors => @project.errors.full_messages}
-    end
+    @project.destroy
+    render json: @project
   end
 
   private
 
   def project_params
-    params.require(:project).permit(:title)
+    params.permit(:title)
   end
 end

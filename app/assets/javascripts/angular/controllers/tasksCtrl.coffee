@@ -1,16 +1,21 @@
 @angularTodo.controller 'tasksCtrl', [
   '$scope'
   'tasksFactory'
-  ($scope, tasksFactory) ->
+  'toaster'
+  ($scope, tasksFactory, toaster) ->
 
     $scope.createTask = (project) ->
       if $scope.taskTitle == undefined || angular.equals({}, $scope.taskTitle)
+        toaster.pop 'error', "Title can't be blank"
         return
       tasksFactory.create(
         title: $scope.taskTitle.title
         deadline: $scope.deadline
         project_id: project.id
         ).success (data) ->
+          if data.errors
+            toaster.pop 'error', data.errors[0]
+            return
           project.tasks.push(data.task)
       $scope.taskTitle = {}
 
@@ -26,7 +31,9 @@
 
     $scope.updateTask = (task) ->
       task.title = $scope.taskTitleUpdate.title
-      tasksFactory.update(task)
+      tasksFactory.update(task).success (data) ->
+        if data.errors
+          toaster.pop 'error', data.errors[0]
 
     $scope.switchTaskDone = (task) ->
       task.done = !task.done
