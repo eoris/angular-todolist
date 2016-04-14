@@ -21,6 +21,38 @@ RSpec.describe "Tasks", type: :feature do
     expect(page).to have_content 'Task 1'
   end
 
+  scenario "User update task state" do
+    project = create(:project, title: 'Hello Capybara', user_id: @user.id)
+    create(:task, title: 'Task 1', project_id: project.id)
+    expect(page).to have_content 'Hello Capybara'
+    expect(page).to have_content 'Task 1'
+    expect(page).to have_content I18n.t('projects.add_todo_list')
+
+    find("input[type='checkbox']").click
+
+    # TODO
+    # expect(page).not_to have_content ".label-warning"
+    # expect(page).to have_content ".label-success"
+    # expect(page).to have_content ".task-done-true"
+    should have_css('.label-success')
+
+  end
+
+  scenario "User update task date" do
+    project = create(:project, title: 'Hello Capybara', user_id: @user.id)
+    create(:task, title: 'Task 1', project_id: project.id)
+    expect(page).to have_content 'Hello Capybara'
+    expect(page).to have_content 'Task 1'
+    expect(page).to have_content I18n.t('projects.add_todo_list')
+
+    find("tbody > tr").hover
+    find(".task-edit-date").click
+    find('.day', :text => '15').click
+    find(".task-edit-date").click
+
+    expect(page).not_to have_content '.label-warning'
+  end
+
   scenario "User update task" do
     project = create(:project, title: 'Hello Capybara', user_id: @user.id)
     create(:task, title: 'Task 1', project_id: project.id)
