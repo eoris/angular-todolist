@@ -1,7 +1,7 @@
 .comments(ng-if="task.showComments" ng-controller="commentsCtrl")
   .comment(ng-repeat="comment in task.comments")
     .well.well-sm
-      %button.pull-right.close(aria-hidden="true" ng-click="deleteComment(comment)" type="button") &times;
+      %button.delete-comment-button.pull-right.close(aria-hidden="true" ng-click="deleteComment(comment)" type="button") &times;
       {{comment.text}}
       %ul.attachments
         %li(ng-repeat="attachment in comment.attachments")
@@ -10,8 +10,8 @@
           %span.times(aria-hidden="true" ng-click="deleteAttachment(comment, attachment)") &times;
   .new-comment
     %form(ng-submit="createComment(task)")
-      %textarea.form-control.input-sm(type="text" placeholder="#{I18n.t('comments.comment_placeholred')}" ng-model ="commentText.text" ng-required="true" rows="2")
-      %button.btn.btn-sm.btn-primary(name="attachment" ngf-select="" ngf-multiple="true" ng-model="files")
+      %textarea.form-control.input-sm(name="comment-textarea" type="text" placeholder="#{I18n.t('comments.comment_placeholred')}" ng-model ="commentText.text" ng-required="true" rows="2")
+      %button.attachment.btn.btn-sm.btn-primary(name="attachment" ngf-select="" ngf-multiple="true" ng-model="files")
         = I18n.t('comments.attach_files')
       %a.pull-right.btn.btn-sm.btn-default(aria-hidden="true" ng-click="switchComments(task); sortableOptions.disabled = !sortableOptions.disabled")
         = I18n.t('comments.close')

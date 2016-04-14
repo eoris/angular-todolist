@@ -1,5 +1,5 @@
 class AttachmentsController < ApplicationController
-  load_and_authorize_resource :comment
+  load_resource :comment
   load_and_authorize_resource :attachment, through: :comment, shallow: true
 
   def create

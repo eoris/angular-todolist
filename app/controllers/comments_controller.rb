@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  load_and_authorize_resource :task
+  load_resource :task
   load_and_authorize_resource :comment, through: :task, shallow: true
 
   def create

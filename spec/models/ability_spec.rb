@@ -13,25 +13,25 @@ RSpec.describe Ability do
 
     it { expect(ability).not_to be_able_to(:manage, :all) }
 
-    context 'cannot manage project' do
+    context 'cannot index, create, update, destroy project' do
       it { expect(ability).not_to be_able_to(:create, Project) }
       it { expect(ability).not_to be_able_to(:index, project) }
       it { expect(ability).not_to be_able_to(:update, project) }
       it { expect(ability).not_to be_able_to(:destroy, project) }
     end
 
-    context 'cannot manage task' do
+    context 'cannot create, update, destroy task' do
       it { expect(ability).not_to be_able_to(:create, Task) }
       it { expect(ability).not_to be_able_to(:update, task) }
       it { expect(ability).not_to be_able_to(:destroy, task) }
     end
 
-    context 'cannot manage comment' do
+    context 'cannot create, destroy comment' do
       it { expect(ability).not_to be_able_to(:create, Comment) }
       it { expect(ability).not_to be_able_to(:destroy, comment) }
     end
 
-    context 'cannot manage comment' do
+    context 'cannot create, destroy comment' do
       it { expect(ability).not_to be_able_to(:create, Attachment) }
       it { expect(ability).not_to be_able_to(:destroy, attachment) }
     end
@@ -47,25 +47,25 @@ RSpec.describe Ability do
 
     it { expect(ability).not_to be_able_to(:manage, :all) }
 
-    context 'can manage project' do
+    context 'can index, create, update, destroy project' do
       it { expect(ability).to be_able_to(:create, Project) }
       it { expect(ability).to be_able_to(:index, user_project) }
       it { expect(ability).to be_able_to(:update, user_project) }
       it { expect(ability).to be_able_to(:destroy, user_project) }
     end
 
-    context 'can manage task' do
+    context 'can create, update, destroy task' do
       it { expect(ability).to be_able_to(:create, Task) }
       it { expect(ability).to be_able_to(:update, user_task) }
       it { expect(ability).to be_able_to(:destroy, user_task) }
     end
 
-    context 'can manage comment' do
+    context 'can create, destroy comment' do
       it { expect(ability).to be_able_to(:create, Comment) }
       it { expect(ability).to be_able_to(:destroy, user_comment) }
     end
 
-    context 'can manage comment' do
+    context 'can create, destroy comment' do
       it { expect(ability).to be_able_to(:create, Attachment) }
       it { expect(ability).to be_able_to(:destroy, user_attachment) }
     end
@@ -80,22 +80,22 @@ RSpec.describe Ability do
     let(:user_comment)    { create(:comment, task_id: user_task.id) }
     let(:user_attachment) { create(:attachment, comment_id: user_comment.id) }
 
-    context 'cannot manage project of user' do
+    context 'cannot index, create, update, destroy project of user' do
       it { expect(ability).not_to be_able_to(:index, user_project) }
       it { expect(ability).not_to be_able_to(:update, user_project) }
       it { expect(ability).not_to be_able_to(:destroy, user_project) }
     end
 
-    context 'cannot manage task of user' do
+    context 'cannot update, destroy task of user' do
       it { expect(ability).not_to be_able_to(:update, user_task) }
       it { expect(ability).not_to be_able_to(:destroy, user_task) }
     end
 
-    context 'cannot manage comment of user' do
+    context 'cannot destroy comment of user' do
       it { expect(ability).not_to be_able_to(:destroy, user_comment) }
     end
 
-    context 'cannot manage comment of user' do
+    context 'cannot destroy attachment of user' do
       it { expect(ability).not_to be_able_to(:destroy, user_attachment) }
     end
   end
