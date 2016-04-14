@@ -47,7 +47,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     it 'not authorized' do
       @ability.cannot :manage, Project
-      get :index, format: :json
+      get :create, format: :json
       expect(response).to be_forbidden
     end
   end
@@ -76,7 +76,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     it 'not authorized' do
       @ability.cannot :manage, Project
-      get :index, format: :json
+      patch :update, format: :json, id: project.id
       expect(response).to be_forbidden
     end
   end
@@ -89,7 +89,7 @@ RSpec.describe ProjectsController, type: :controller do
 
     it 'not authorized' do
       @ability.cannot :manage, Project
-      get :index, format: :json
+      delete :destroy, format: :json, id: project.id
       expect(response).to be_forbidden
     end
   end
