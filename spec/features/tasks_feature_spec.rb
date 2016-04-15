@@ -7,7 +7,7 @@ RSpec.describe "Tasks", type: :feature do
   scenario "User add new task" do
     create(:project, title: 'Hello Capybara', user_id: @user.id)
     expect(page).to have_content I18n.t('projects.add_todo_list')
-    sleep(2)
+    sleep(5)
     expect(page).to have_content 'Hello Capybara'
 
     fill_in 'task-title-input', with: 'Task 1'
