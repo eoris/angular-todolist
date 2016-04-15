@@ -31,6 +31,10 @@ RSpec.feature "Tasks", js: true do
     project = create(:project, title: 'Hello Capybara', user_id: @user.id)
     task = create(:task, title: 'Task 1', deadline: '', project_id: project.id)
 
+    expect(page).to have_content 'SIMPLE TODO LIST'
+    expect(page).to have_content 'FROM RUBY GARAGE'
+    expect(page).to have_css '.plus-project'
+    expect(page).to have_css '.add-project'
     expect(page).to have_content I18n.t('projects.add_todo_list')
     expect(page).to have_content 'Hello Capybara'
     expect(page).to have_content 'Task 1'

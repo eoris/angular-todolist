@@ -49,11 +49,16 @@ RSpec.feature "Attachment", js: true do
 
     find("tbody > tr").hover
     find(".task-comment").click
-    fill_in 'comment-textarea', with: 'Comment'
     attach_file_script
+    expect(page).to have_content 'SIMPLE TODO LIST'
+    expect(page).to have_content 'FROM RUBY GARAGE'
+    expect(page).to have_content I18n.t('session.sign_out')
     expect(page).to have_content I18n.t('comments.attach_files')
     expect(page).to have_content I18n.t('comments.add_comment')
     expect(page).to have_content I18n.t('comments.close')
+    expect(page).to have_css('.attachment')
+    expect(page).to have_css('.delete-upload-attachment')
+    fill_in 'comment-textarea', with: 'Comment'
     expect(page).to have_content 'lorem.txt'
     find(".delete-upload-attachment").click
     click_button I18n.t('comments.add_comment')
