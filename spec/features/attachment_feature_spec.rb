@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Attachment", type: :feature do
+RSpec.feature "Attachment", js: true do
 
   before { sign_in }
 
@@ -51,7 +51,10 @@ RSpec.describe "Attachment", type: :feature do
     find(".task-comment").click
     fill_in 'comment-textarea', with: 'Comment'
     attach_file_script
-    sleep(2)
+    expect(page).to have_content I18n.t('comments.attach_files')
+    expect(page).to have_content I18n.t('comments.add_comment')
+    expect(page).to have_content I18n.t('comments.close')
+    expect(page).to have_content 'lorem.txt'
     find(".delete-upload-attachment").click
     click_button I18n.t('comments.add_comment')
 

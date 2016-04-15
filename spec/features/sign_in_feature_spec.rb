@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Sign In", type: :feature do
+RSpec.feature "Sign In", js: true do
 
   let(:user) { create(:user) }
 

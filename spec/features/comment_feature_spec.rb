@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Comment", type: :feature do
+RSpec.feature "Comment", js: true do
 
   before { sign_in }
 

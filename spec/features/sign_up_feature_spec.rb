@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Sign Up", type: :feature do
+RSpec.feature "Sign Up", js: true do
 
   scenario "User sign up successfully" do
     visit root_path

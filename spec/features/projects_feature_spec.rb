@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Projects", type: :feature do
+RSpec.feature "Projects", js: true do
 
   before { sign_in }
 
@@ -16,8 +16,8 @@ RSpec.describe "Projects", type: :feature do
 
   scenario "User update project" do
     create(:project, title: 'Hello Capybara', user_id: @user.id)
-    expect(page).to have_content 'Hello Capybara'
     expect(page).to have_content I18n.t('projects.add_todo_list')
+    expect(page).to have_content 'Hello Capybara'
 
     find(".panel-heading").hover
     find(".project-edit").click
@@ -30,8 +30,8 @@ RSpec.describe "Projects", type: :feature do
 
   scenario "User delete project" do
     create(:project, title: 'Hello Capybara', user_id: @user.id)
-    expect(page).to have_content 'Hello Capybara'
     expect(page).to have_content I18n.t('projects.add_todo_list')
+    expect(page).to have_content 'Hello Capybara'
 
     find(".panel-heading").hover
     find(".project-delete").click

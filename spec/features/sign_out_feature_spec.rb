@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Projects", type: :feature do
+RSpec.feature "Sign Out", js: true do
 
   before { sign_in }
 
