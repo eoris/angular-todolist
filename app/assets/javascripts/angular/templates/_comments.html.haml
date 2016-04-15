@@ -7,7 +7,7 @@
         %li(ng-repeat="attachment in comment.attachments")
           %span.glyphicon.glyphicon-file
           %a(href="{{attachment.file.file.url}}" download) {{attachment.file_identifier}}
-          %span.times(aria-hidden="true" ng-click="deleteAttachment(comment, attachment)") &times;
+          %span.times.delete-attachment(aria-hidden="true" ng-click="deleteAttachment(comment, attachment)") &times;
   .new-comment
     %form(ng-submit="createComment(task)")
       %textarea.form-control.input-sm(name="comment-textarea" type="text" placeholder="#{I18n.t('comments.comment_placeholred')}" ng-model ="commentText.text" ng-required="true" rows="2")
@@ -20,4 +20,4 @@
       .upload-attachments
         %p(ng-repeat="file in files")
           %span.glyphicon.glyphicon-file {{file.name}}
-          %span.times(ng-click="deleteUploadAttachment($index)") &times;
+          %span.times.delete-upload-attachment(ng-click="deleteUploadAttachment($index)") &times;
