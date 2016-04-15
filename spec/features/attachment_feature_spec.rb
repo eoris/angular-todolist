@@ -25,7 +25,6 @@ RSpec.describe "Attachment", type: :feature do
   scenario "User delete loaded attachment" do
     project = create(:project, title: 'Hello Capybara', user_id: @user.id)
     create(:task, title: 'Task 1', project_id: project.id)
-    file = create(:attachment)
     expect(page).to have_content I18n.t('projects.add_todo_list')
     expect(page).to have_content 'Hello Capybara'
     expect(page).to have_content 'Task 1'
@@ -44,7 +43,6 @@ RSpec.describe "Attachment", type: :feature do
   scenario "User delete not loaded attachment" do
     project = create(:project, title: 'Hello Capybara', user_id: @user.id)
     create(:task, title: 'Task 1', project_id: project.id)
-    file = create(:attachment)
     expect(page).to have_content I18n.t('projects.add_todo_list')
     expect(page).to have_content 'Hello Capybara'
     expect(page).to have_content 'Task 1'
@@ -53,8 +51,9 @@ RSpec.describe "Attachment", type: :feature do
     find(".task-comment").click
     fill_in 'comment-textarea', with: 'Comment'
     attach_file_script
-    click_button I18n.t('comments.add_comment')
+    sleep(2)
     find(".delete-upload-attachment").click
+    click_button I18n.t('comments.add_comment')
 
     expect(page).to have_content 'Comment'
     expect(page).not_to have_content 'lorem.txt'

@@ -13,7 +13,7 @@
         $scope.projects = data.projects
 
     $scope.createProject = ->
-      if $scope.projectTitle == undefined
+      if $scope.projectTitle == undefined || angular.equals({}, $scope.projectTitle)
         toaster.pop 'error', "Title can't be blank"
         return
       projectsFactory.create(

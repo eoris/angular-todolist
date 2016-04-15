@@ -5,7 +5,7 @@
   'toaster'
   ($scope, $state, $auth, toaster) ->
 
-    registrationForm = {}
+    $scope.registrationForm = {}
 
     $scope.handleRegBtnClick = ->
       if $scope.registrationForm == undefined || angular.equals({}, $scope.registrationForm)
