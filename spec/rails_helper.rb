@@ -9,7 +9,9 @@ require 'rspec/rails'
 require 'devise'
 
 require 'capybara/rspec'
-Capybara.default_driver = :selenium
+# Capybara.default_driver = :selenium
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
 
 # Add additional requires below this line. Rails is not loaded until this point!
 

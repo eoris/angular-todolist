@@ -43,6 +43,8 @@ group :test do
   gem 'faker'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
+  gem 'poltergeist'
+  gem 'phantomjs', :require => 'phantomjs/poltergeist'
 end
 
 group :development do
