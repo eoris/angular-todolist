@@ -11,8 +11,9 @@
   .new-comment
     %form(ng-submit="createComment(task)")
       %textarea.form-control.input-sm(name="comment-textarea" type="text" placeholder="#{I18n.t('comments.comment_placeholred')}" ng-model ="commentText.text" ng-required="true" rows="2")
-      %button.attachment.btn.btn-sm.btn-primary(name="attachment" ngf-select="" ngf-multiple="true" ng-model="files")
-        = I18n.t('comments.attach_files')
+      %span.btn.btn-sm.btn-primary.btn-attachment.delme
+        %input(name='attachment' type='file' ngf-select='' ng-model='files' ngf-multiple="true")
+          = I18n.t('comments.attach_files')
       %a.pull-right.btn.btn-sm.btn-default(aria-hidden="true" ng-click="switchComments(task); sortableOptions.disabled = !sortableOptions.disabled")
         = I18n.t('comments.close')
       %button.pull-right.btn.btn-sm.btn-success

@@ -15,7 +15,8 @@ RSpec.feature "Attachment", js: true do
     find("tbody > tr").hover
     find(".task-comment").click
     fill_in 'comment-textarea', with: 'Comment'
-    attach_file_script
+    page.execute_script("$('input[name=attachment]').css('opacity','1')")
+    attach_file('attachment', "#{Rails.root}/spec/fixtures/files/lorem.txt")
     click_button I18n.t('comments.add_comment')
 
     expect(page).to have_content 'Comment'
@@ -32,7 +33,8 @@ RSpec.feature "Attachment", js: true do
     find("tbody > tr").hover
     find(".task-comment").click
     fill_in 'comment-textarea', with: 'Comment'
-    attach_file_script
+    page.execute_script("$('input[name=attachment]').css('opacity','1')")
+    attach_file('attachment', "#{Rails.root}/spec/fixtures/files/lorem.txt")
     click_button I18n.t('comments.add_comment')
     find(".delete-attachment").click
 
