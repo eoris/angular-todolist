@@ -2,15 +2,20 @@ require 'rails_helper'
 
 RSpec.feature "Attachment", js: true do
 
-  before { sign_in }
+  let(:project) { create(:project, user: @user) }
+  let(:task)    { create(:task, project: project) }
+
+  before do
+    sign_in_auth
+    project
+    task
+  end
 
   scenario "User add new attachment" do
-    project = create(:project, title: 'Hello Capybara', user_id: @user.id)
-    create(:task, title: 'Task 1', project_id: project.id)
-    file = create(:attachment)
+    visit root_path
     expect(page).to have_content I18n.t('projects.add_todo_list')
-    expect(page).to have_content 'Hello Capybara'
-    expect(page).to have_content 'Task 1'
+    expect(page).to have_content project.title
+    expect(page).to have_content task.title
 
     find("tbody > tr").hover
     find(".task-comment").click
@@ -24,11 +29,10 @@ RSpec.feature "Attachment", js: true do
   end
 
   scenario "User delete loaded attachment" do
-    project = create(:project, title: 'Hello Capybara', user_id: @user.id)
-    create(:task, title: 'Task 1', project_id: project.id)
+    visit root_path
     expect(page).to have_content I18n.t('projects.add_todo_list')
-    expect(page).to have_content 'Hello Capybara'
-    expect(page).to have_content 'Task 1'
+    expect(page).to have_content project.title
+    expect(page).to have_content task.title
 
     find("tbody > tr").hover
     find(".task-comment").click

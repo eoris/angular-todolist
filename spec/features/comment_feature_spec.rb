@@ -2,14 +2,22 @@ require 'rails_helper'
 
 RSpec.feature "Comment", js: true do
 
-  before { sign_in }
+  let(:project) { create(:project, user: @user) }
+  let(:task)    { create(:task, project: project) }
+  let(:comment) { create(:comment, task: task) }
+
+  before do
+    sign_in_auth
+    project
+    task
+    comment
+  end
 
   scenario "User add new comment" do
-    project = create(:project, title: 'Hello Capybara', user_id: @user.id)
-    create(:task, title: 'Task 1', project_id: project.id)
+    visit root_path
     expect(page).to have_content I18n.t('projects.add_todo_list')
-    expect(page).to have_content 'Hello Capybara'
-    expect(page).to have_content 'Task 1'
+    expect(page).to have_content project.title
+    expect(page).to have_content task.title
 
     find("tbody > tr").hover
     find(".task-comment").click
@@ -20,16 +28,14 @@ RSpec.feature "Comment", js: true do
   end
 
   scenario "User delete comment" do
-    project = create(:project, title: 'Hello Capybara', user_id: @user.id)
-    task = create(:task, title: 'Task 1', project_id: project.id)
-    create(:comment, text: 'Comment', task_id: task.id)
+    visit root_path
     expect(page).to have_content I18n.t('projects.add_todo_list')
-    expect(page).to have_content 'Hello Capybara'
-    expect(page).to have_content 'Task 1'
+    expect(page).to have_content project.title
+    expect(page).to have_content task.title
 
     find("tbody > tr").hover
     find(".task-comment").click
-    expect(page).to have_content 'Comment'
+    expect(page).to have_content comment.text
     find('.delete-comment-button').click
 
     expect(page).not_to have_content 'Comment'

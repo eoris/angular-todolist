@@ -2,9 +2,17 @@ require 'rails_helper'
 
 RSpec.feature "Projects", js: true do
 
-  before { sign_in }
+  let(:project) { create(:project, user: @user) }
+  let(:task)    { create(:task, project: project) }
+
+  before do
+    sign_in_auth
+    project
+    task
+  end
 
   scenario "User add new project" do
+    visit root_path
     expect(page).to have_content I18n.t('projects.add_todo_list')
 
     click_button I18n.t('projects.add_todo_list')
@@ -15,9 +23,9 @@ RSpec.feature "Projects", js: true do
   end
 
   scenario "User update project" do
-    create(:project, title: 'Hello Capybara', user_id: @user.id)
+    visit root_path
     expect(page).to have_content I18n.t('projects.add_todo_list')
-    expect(page).to have_content 'Hello Capybara'
+    expect(page).to have_content project.title
 
     find(".panel-heading").hover
     find(".project-edit").click
@@ -29,9 +37,9 @@ RSpec.feature "Projects", js: true do
   end
 
   scenario "User delete project" do
-    create(:project, title: 'Hello Capybara', user_id: @user.id)
+    visit root_path
     expect(page).to have_content I18n.t('projects.add_todo_list')
-    expect(page).to have_content 'Hello Capybara'
+    expect(page).to have_content project.title
 
     find(".panel-heading").hover
     find(".project-delete").click

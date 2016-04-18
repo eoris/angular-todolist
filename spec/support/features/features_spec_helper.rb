@@ -1,7 +1,6 @@
-def sign_in
+def sign_in_auth
   @user = create(:user)
+  auth_headers = @user.create_new_auth_token
   visit root_path
-  fill_in 'login-username', with: @user.email
-  fill_in 'login-password', with: @user.password
-  click_button I18n.t('session.login')
+  create_cookie('auth_headers', auth_headers.to_json)
 end
