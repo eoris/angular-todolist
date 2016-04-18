@@ -45,7 +45,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
-  gem "show_me_the_cookies"
 end
 
 group :development do
