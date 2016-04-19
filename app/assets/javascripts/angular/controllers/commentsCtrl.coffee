@@ -9,6 +9,7 @@
 
     $scope.createComment = (task) ->
       if $scope.commentText == undefined || angular.equals({}, $scope.commentText)
+        toaster.pop 'error', "Text can't be blank"
         return
       commentsFactory.create(
         text: $scope.commentText.text

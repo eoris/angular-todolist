@@ -16,7 +16,7 @@
           %span.glyphicon.glyphicon-list-alt(aria-hidden="true")
         %input#edit-project-input.form-control(type="text" ng-model="projectTitleUpdate.title" ng-required="true" ng-minlength="1")
         %span.input-group-btn
-          %button#update-project-button.btn.btn-default(type="submit" ng-disabled="updateProjectForm.$invalid")
+          %button.update-project-btn.btn.btn-default(id="update-project-button-{{project.id}}" type="submit" ng-disabled="updateProjectForm.$invalid")
             %span.glyphicon.glyphicon-ok-circle
           %a.btn.btn-default(ng-click="switchEditProject(project)")
             %span.glyphicon.glyphicon-remove-circle

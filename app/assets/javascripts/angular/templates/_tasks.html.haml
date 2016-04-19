@@ -15,7 +15,7 @@
           %span.input-group-btn
             %button.edit-task-title-submit.btn.btn-default.btn-sm(type="submit" ng-disabled="updateTaskForm.$invalid")
               %span.glyphicon.glyphicon-ok-circle
-            %a.btn.btn-default.btn-sm(ng-click="switchEditTask(task)")
+            %a.cancel-edit-task-title.btn.btn-default.btn-sm(ng-click="switchEditTask(task)")
               %span.glyphicon.glyphicon-remove-circle
     %td.task-date
       %span.label(ng-class="task.done ? 'label-success' : 'label-warning'") {{task.deadline | date:'dd-MM-yyyy'}}

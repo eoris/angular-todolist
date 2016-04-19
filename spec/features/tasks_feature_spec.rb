@@ -22,6 +22,15 @@ RSpec.feature "Tasks", js: true do
     expect(page).to have_content 'Task 1'
   end
 
+  scenario "User add invalid new task" do
+    visit root_path
+    expect(page).to have_content I18n.t('projects.add_todo_list')
+
+    click_button I18n.t('projects.add_task')
+
+    expect(page).to have_content "Title can't be blank"
+  end
+
   scenario "User update task state" do
     visit root_path
     expect(page).to have_content I18n.t('projects.add_todo_list')
@@ -60,8 +69,36 @@ RSpec.feature "Tasks", js: true do
     fill_in 'edit-task-title-input', with: 'There is no task'
     find('.edit-task-title-submit').click
 
-    expect(page).not_to have_content 'Task 1'
+    expect(page).not_to have_content task.title
     expect(page).to have_content 'There is no task'
+  end
+
+  scenario "User fills in task title field for update and then presses cancel button" do
+    visit root_path
+    expect(page).to have_content I18n.t('projects.add_todo_list')
+    expect(page).to have_content project.title
+    expect(page).to have_content task.title
+
+    find("tbody > tr").hover
+    find(".task-edit").click
+    fill_in 'edit-task-title-input', with: 'There is no task'
+    find('.cancel-edit-task-title').click
+
+    expect(page).to have_content task.title
+    expect(page).not_to have_content 'There is no task'
+  end
+
+  scenario "User, when update task, fills in an empty task title and can't click submit button" do
+    visit root_path
+    expect(page).to have_content I18n.t('projects.add_todo_list')
+    expect(page).to have_content project.title
+    expect(page).to have_content task.title
+
+    find("tbody > tr").hover
+    find(".task-edit").click
+    fill_in 'edit-task-title-input', with: ''
+
+    expect(page).to have_css('.edit-task-title-submit:disabled')
   end
 
   scenario "User delete task" do
@@ -73,6 +110,6 @@ RSpec.feature "Tasks", js: true do
     find("tbody > tr").hover
     find(".task-delete").click
 
-    expect(page).not_to have_content 'Task 1'
+    expect(page).not_to have_content task.title
   end
 end

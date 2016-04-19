@@ -10,7 +10,7 @@
           %span.times.delete-attachment(aria-hidden="true" ng-click="deleteAttachment(comment, attachment)") &times;
   .new-comment
     %form(ng-submit="createComment(task)")
-      %textarea.form-control.input-sm(name="comment-textarea" type="text" placeholder="#{I18n.t('comments.comment_placeholred')}" ng-model ="commentText.text" ng-required="true" rows="2")
+      %textarea.form-control.input-sm(name="comment-textarea" type="text" placeholder="#{I18n.t('comments.comment_placeholred')}" ng-model ="commentText.text" rows="2")
       %span.btn.btn-sm.btn-primary.btn-attachment.delme
         %input(name='attachment' type='file' ngf-select='' ng-model='files' ngf-multiple="true")
           = I18n.t('comments.attach_files')

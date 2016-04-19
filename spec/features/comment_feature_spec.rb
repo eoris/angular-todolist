@@ -27,6 +27,19 @@ RSpec.feature "Comment", js: true do
     expect(page).to have_content 'Comment'
   end
 
+  scenario "User add invalid comment" do
+    visit root_path
+    expect(page).to have_content I18n.t('projects.add_todo_list')
+    expect(page).to have_content project.title
+    expect(page).to have_content task.title
+
+    find("tbody > tr").hover
+    find(".task-comment").click
+    click_button I18n.t('comments.add_comment')
+
+    expect(page).to have_content "Text can't be blank"
+  end
+
   scenario "User delete comment" do
     visit root_path
     expect(page).to have_content I18n.t('projects.add_todo_list')
