@@ -35,16 +35,19 @@
       templateUrl: 'angular/templates/_sign_up.html'
       controller: 'registrationCtrl')
 
-    $urlRouterProvider.otherwise 'sign_in'
+    $urlRouterProvider.otherwise '/'
     $authProvider.configure
       apiUrl: ''
       authProviderPaths: facebook: '/auth/facebook'
 ])
 
-@angularTodo.run [
-  '$auth'
-  '$state'
-  ($auth, $state) ->
+@angularTodo.run ($rootScope, $state, $auth) ->
+  $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState) ->
     $auth.validateUser().then (response) ->
-      $state.go('projects')
-]
+      redirectToProjects = toState.name == 'sign_in' || toState.name == 'sign_up'
+      if redirectToProjects
+        user = response
+        if !angular.equals({}, user)
+          $state.go('projects')
+          event.preventDefault()
+
