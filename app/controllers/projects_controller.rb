@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource through: :current_user
 
   def index
-    render json: @projects
+    render json: @projects, root: false
   end
 
   def create

@@ -2,15 +2,19 @@
   '$scope'
   'projectsFactory'
   'toaster'
-  ($scope, projectsFactory, toaster) ->
+  'Restangular'
+  ($scope, projectsFactory, toaster, Restangular) ->
 
     window.history.pushState("", "", "/#/")
 
     $scope.projectTitleUpdate = {}
 
-    index = ->
-      projectsFactory.index().success (data) ->
-        $scope.projects = data.projects
+    Restangular.all('projects').getList().then (projects) ->
+      $scope.projects = projects
+
+    # index = ->
+    #   projectsFactory.index().success (projects) ->
+    #     $scope.projects = projects
 
     $scope.createProject = ->
       if $scope.projectTitle == undefined || angular.equals({}, $scope.projectTitle)
@@ -39,5 +43,5 @@
       $scope.projectTitleUpdate.title = project.title
       project.editProject = !project.editProject
 
-    index()
+    # index()
 ]

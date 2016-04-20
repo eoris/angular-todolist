@@ -8,6 +8,7 @@
   'toaster'
   'ngAnimate'
   'ngFileUpload'
+  'restangular'
   ])
 
 @angularTodo.config([
@@ -44,10 +45,8 @@
 @angularTodo.run ($rootScope, $state, $auth) ->
   $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState) ->
     $auth.validateUser().then (response) ->
-      redirectToProjects = toState.name == 'sign_in' || toState.name == 'sign_up'
-      if redirectToProjects
-        user = response
-        if !angular.equals({}, user)
+      if toState.name == 'sign_in' || toState.name == 'sign_up'
+        if !angular.equals({}, response)
           $state.go('projects')
           event.preventDefault()
 
