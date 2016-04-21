@@ -42,11 +42,16 @@
       authProviderPaths: facebook: '/auth/facebook'
 ])
 
-@angularTodo.run ($rootScope, $state, $auth) ->
-  $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState) ->
-    $auth.validateUser().then (response) ->
-      if toState.name == 'sign_in' || toState.name == 'sign_up'
-        if !angular.equals({}, response)
-          $state.go('projects')
-          event.preventDefault()
+@angularTodo.run([
+  '$rootScope'
+  '$state'
+  '$auth'
+  ($rootScope, $state, $auth) ->
+    $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState) ->
+      $auth.validateUser().then (response) ->
+        if toState.name == 'sign_in' || toState.name == 'sign_up'
+          if !angular.equals({}, response)
+            $state.go('projects')
+            event.preventDefault()
+])
 

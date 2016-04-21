@@ -16,7 +16,7 @@
 //= require toaster
 //= require nprogress-angular
 //= require ng-file-upload
-//= require underscore-min
-//= require restangular.min
+//= require underscore
+//= require restangular
 //= require angular-todo
 //= require_tree .
