@@ -17,6 +17,7 @@
 //= require nprogress-angular
 //= require ng-file-upload
 //= require underscore
+//= require angular-underscore-module.js
 //= require restangular
 //= require angular-todo
 //= require_tree .
