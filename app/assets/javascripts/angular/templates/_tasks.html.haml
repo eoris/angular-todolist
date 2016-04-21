@@ -1,5 +1,5 @@
 %tbody(ui-sortable="sortableOptions" ng-model="project.tasks")
-  %tr.task-row(ng-repeat="task in project.tasks")
+  %tr.task-row(ng-repeat="task in project.tasks | orderBy:'position'")
     %td.task-checkbox
       %label
         %input.text-center(type="checkbox" ng-checked="task.done" ng-click="switchTaskDone(task)")

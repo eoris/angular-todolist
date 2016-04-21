@@ -1,4 +1,4 @@
-.panel.panel-primary(ng-repeat="project in projects")
+.panel.panel-primary(ng-repeat="project in projects | orderBy:'id'")
 
   .panel-heading
 
@@ -6,7 +6,7 @@
       %span.glyphicon.glyphicon-list-alt.list(aria-hidden="true")
       %span.panel-title &nbsp; {{project.title | limitTo: 32}}
 
-      .pull-right.edit-project
+      .pull-right.edit-project(ng-hide="showEditProject")
         %span.glyphicon.glyphicon-pencil.project-edit(aria-hidden="true" ng-click="switchEditProject(project)")
         %span.glyphicon.glyphicon-trash.project-delete(aria-hidden="true" ng-click="deleteProject(project)")
 
