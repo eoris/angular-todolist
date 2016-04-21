@@ -1,9 +1,8 @@
 @angularTodo.controller 'projectsCtrl', [
   '$scope'
   'toaster'
-  '_'
   'Restangular'
-  ($scope, toaster, _, Restangular) ->
+  ($scope, toaster, Restangular) ->
 
     window.history.pushState("", "", "/#/")
 

@@ -8,7 +8,6 @@
   'toaster'
   'ngAnimate'
   'ngFileUpload'
-  'underscore'
   'restangular'
   ])
 
