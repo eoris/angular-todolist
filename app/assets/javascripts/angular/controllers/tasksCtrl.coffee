@@ -1,18 +1,18 @@
 @angularTodo.controller 'tasksCtrl', [
   '$scope'
-  'tasksFactory'
   'toaster'
-  ($scope, tasksFactory, toaster) ->
+  'Restangular'
+  ($scope, toaster, Restangular) ->
 
     $scope.createTask = (project) ->
       if $scope.taskTitle == undefined || angular.equals({}, $scope.taskTitle)
         toaster.pop 'error', "Title can't be blank"
         return
-      tasksFactory.create(
+      Restangular.one('projects', project.id).all('tasks').post({
         title: $scope.taskTitle.title
         deadline: $scope.deadline
         project_id: project.id
-        ).success (data) ->
+        }).then (data) ->
           if data.errors
             toaster.pop 'error', data.errors[0]
             return
@@ -23,7 +23,7 @@
       $scope.project.tasks.indexOf(task)
 
     $scope.deleteTask = (task) ->
-      tasksFactory.delete(task).success (data) ->
+      Restangular.one('tasks', task.id).remove().then ->
         index = $scope.taskIndex(task)
         $scope.project.tasks.splice(index, 1)
 
@@ -31,13 +31,16 @@
 
     $scope.updateTask = (task) ->
       task.title = $scope.taskTitleUpdate.title
-      tasksFactory.update(task).success (data) ->
+      Restangular.one('tasks', task.id).patch({title: task.title}).then (data) ->
         if data.errors
           toaster.pop 'error', data.errors[0]
 
+    $scope.setDeadline = (task) ->
+      Restangular.one('tasks', task.id).patch({deadline: task.deadline})
+
     $scope.switchTaskDone = (task) ->
       task.done = !task.done
-      tasksFactory.update(task)
+      Restangular.one('tasks', task.id).patch({done: task.done})
 
     $scope.switchEditTask = (task) ->
       $scope.taskTitleUpdate.title = task.title
@@ -61,10 +64,7 @@
         tasks = $scope.project.tasks
         tasks.map (task) ->
           task.position = $scope.taskIndex(task)
-          tasksFactory.update(task)
-
-    $scope.setDeadline = (task) ->
-      tasksFactory.update(task)
+          Restangular.one('tasks', task.id).patch({position: task.position})
 
     ]
 

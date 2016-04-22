@@ -2,7 +2,7 @@
 
   .panel-heading
 
-    .title(ng-if="!project.editProject")
+    .title(ng-if="!project.editProject" ng-dblclick="switchEditProject(project)")
       %span.glyphicon.glyphicon-list-alt.list(aria-hidden="true")
       %span.panel-title &nbsp; {{project.title | limitTo: 32}}
 

@@ -1,9 +1,9 @@
 %tbody(ui-sortable="sortableOptions" ng-model="project.tasks")
-  %tr.task-row(ng-repeat="task in project.tasks | orderBy:'position'")
+  %tr.task-row(ng-repeat="task in project.tasks | orderBy: 'position'")
     %td.task-checkbox
       %label
         %input.text-center(type="checkbox" ng-checked="task.done" ng-click="switchTaskDone(task)")
-    %td.task(ng-if="!task.editTask" class="task-done-{{task.done}}")
+    %td.task(ng-if="!task.editTask" ng-dblclick="switchEditTask(task)" class="task-done-{{task.done}}")
       .task-title {{task.title}}
 
       .task-comments(ng-include = "'angular/templates/_comments.html'")
